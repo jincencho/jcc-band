@@ -57,13 +57,15 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
             <strong style={{ color: 'var(--text-primary)' }}>백화점</strong>과 <strong style={{ color: 'var(--text-primary)' }}>로드샵</strong>의 정책을<br />
             <strong style={{ color: 'var(--text-primary)' }}>한 곳에서 한 번에</strong> 이용하세요.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button className="btn-primary" onClick={onNavigateToReservation}>상담예약 신청하기</button>
-            <button className="glass-panel" onClick={onNavigateToAbout} style={{ padding: '0.75rem 1.5rem', background: 'transparent', cursor: 'pointer', color: 'var(--text-primary)', border: '1px solid var(--glass-border)' }}>
-              더 알아보기
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+            <button className="btn-primary pulse" onClick={onNavigateToReservation} style={{ flex: 1, minWidth: '200px' }}>
+              지금 바로 상담예약 📅
             </button>
-            <button className="glass-panel" onClick={handleShare} style={{ padding: '0.75rem 1.5rem', background: 'rgba(59, 130, 246, 0.1)', cursor: 'pointer', color: 'var(--accent-blue)', border: '1px solid var(--accent-blue)', fontWeight: 600 }}>
-              공유하기 🔗
+            <button className="btn-secondary" onClick={onNavigateToAbout} style={{ flex: 1, minWidth: '200px' }}>
+              조준석 약력 확인하기 🔍
+            </button>
+            <button className="glass-panel" onClick={handleShare} style={{ width: '100%', padding: '0.75rem', marginTop: '0.5rem', background: 'rgba(197, 160, 89, 0.05)', color: 'var(--accent-gold-light)', border: '1px dashed var(--accent-gold)', fontSize: '0.9rem' }}>
+              주변에 공유하기 🔗
             </button>
           </div>
         </div>
