@@ -32,7 +32,7 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
         borderRadius: '50%', zIndex: -1
       }}></div>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap' }}>
+      <div className="container mobile-stack" style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap' }}>
         
         {/* Left Side: Image */}
         <div style={{ flex: '1', minWidth: '300px', display: 'flex', justifyContent: 'center' }}>

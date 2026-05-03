@@ -87,7 +87,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         </h3>
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
           gap: '1.5rem' 
         }}>
           {[
@@ -156,10 +156,10 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
       </div>
 
       {/* 프로필 + 캐리어 타임라인 */}
-      <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+      <div className="mobile-stack" style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>
         
         {/* 왼쪽: 프로필 카드 */}
-        <div className="glass-panel" style={{ flex: '1', minWidth: '260px', maxWidth: '320px', textAlign: 'center', borderTop: '4px solid var(--accent-blue)' }}>
+        <div className="glass-panel" style={{ flex: '1', minWidth: '280px', maxWidth: '350px', textAlign: 'center', borderTop: '4px solid var(--accent-gold)' }}>
           <div style={{
             width: '120px', height: '120px', borderRadius: '50%', margin: '0 auto 1.5rem',
             overflow: 'hidden', border: '3px solid var(--accent-gold)',
@@ -198,21 +198,21 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
             {/* 타임라인 수직선 */}
             <div style={{
               position: 'absolute', left: '20px', top: '0', bottom: '0',
-              width: '2px', background: 'linear-gradient(to bottom, var(--accent-blue), var(--accent-purple))'
+              width: '2px', background: 'linear-gradient(to bottom, var(--accent-gold), var(--accent-gold-light))'
             }}></div>
 
             {career.map((item, idx) => (
               <div key={idx} style={{ display: 'flex', gap: '1.5rem', marginBottom: '2.5rem', position: 'relative' }}>
                 <div style={{
                   width: '42px', height: '42px', borderRadius: '50%', flexShrink: 0,
-                  background: 'var(--bg-color)', border: '2px solid var(--accent-blue)',
+                  background: 'var(--bg-color)', border: '2px solid var(--accent-gold)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: '1.2rem', zIndex: 1
                 }}>
                   {item.icon}
                 </div>
                 <div className="glass-panel" style={{ flex: 1, padding: '1.25rem 1.5rem' }}>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--accent-blue)', fontWeight: 600, marginBottom: '0.4rem', letterSpacing: '1px' }}>{item.year}</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.4rem', letterSpacing: '1px' }}>{item.year}</div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>{item.title}</h4>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, wordBreak: 'keep-all' }}>{item.desc}</p>
                 </div>
@@ -240,7 +240,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
       </div>
 
       {/* 하단 강조 문구 */}
-      <div className="glass-panel" style={{ marginTop: '3rem', textAlign: 'center', borderTop: '4px solid var(--accent-purple)', padding: '2.5rem' }}>
+      <div className="glass-panel" style={{ marginTop: '3rem', textAlign: 'center', borderTop: '4px solid var(--accent-gold)', padding: '2.5rem' }}>
         <p style={{ fontSize: '1.2rem', lineHeight: 1.9, wordBreak: 'keep-all', color: 'var(--text-secondary)' }}>
           "저는 <strong style={{ color: 'var(--text-primary)' }}>고객이 만족할 때까지</strong> 옆에 있겠습니다.<br />
           경남 진주 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>에서,<br />

@@ -174,20 +174,20 @@ export default function Reservation({ onBack }) {
   };
 
   const renderSelection = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
+    <div className="mobile-stack" style={{ display: 'flex', gap: '1.5rem', width: '100%' }}>
       <button 
         className="glass-panel pulse" 
         onClick={() => setView('quote')}
         style={{ 
           padding: '2rem 1.5rem', textAlign: 'left', cursor: 'pointer', 
           borderLeft: '5px solid var(--accent-gold)', width: '100%',
-          background: 'rgba(255, 255, 255, 0.07)',
+          background: 'var(--glass-bg)',
           transition: 'all 0.3s ease'
         }}
       >
         <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📧</div>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', color: 'white' }}>비대면 견적 요청</h3>
-        <p style={{ color: '#cbd5e1', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
           매장 방문 없이 <strong style={{ color: 'var(--accent-gold-light)' }}>카톡이나 문자</strong>로<br />가장 합리적인 견적을 먼저 받아보세요.
         </p>
       </button>
@@ -198,13 +198,13 @@ export default function Reservation({ onBack }) {
         style={{ 
           padding: '2rem 1.5rem', textAlign: 'left', cursor: 'pointer', 
           borderLeft: '5px solid #ffffff', width: '100%',
-          background: 'rgba(255, 255, 255, 0.07)',
+          background: 'var(--glass-bg)',
           transition: 'all 0.3s ease'
         }}
       >
         <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', color: 'white' }}>프리미엄 상담 예약</h3>
-        <p style={{ color: '#cbd5e1', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
           조준석 매니저와 <strong style={{ color: 'white' }}>1:1 대면 상담</strong>을 통해<br />전문적인 가전 솔루션을 제공받으세요. (최대 3시간)
         </p>
       </button>
@@ -232,7 +232,7 @@ export default function Reservation({ onBack }) {
         <>
           <div className="form-group">
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>방문 희망 날짜</label>
-            <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
+            <div style={{ background: 'rgba(0,0,0,0.3)', padding: 'clamp(0.5rem, 2vw, 1rem)', borderRadius: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 <button type="button" onClick={prevMonth} style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '1.2rem', cursor: 'pointer' }}>&lt;</button>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{formatMonth}</h3>

@@ -32,15 +32,15 @@ export default function WhySamsung({ onBack }) {
         </button>
       )}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <p style={{ color: 'var(--accent-blue)', fontWeight: 600, letterSpacing: '2px', marginBottom: '0.75rem', fontSize: '0.9rem' }}>WHY SAMSUNG?</p>
+        <p style={{ color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '2px', marginBottom: '0.75rem', fontSize: '0.9rem' }}>WHY SAMSUNG?</p>
         <h2 style={{ fontSize: '2.8rem', fontWeight: 700, marginBottom: '1.5rem', lineHeight: 1.2, wordBreak: 'keep-all' }}>
           일반 가전이 필요하시다면<br />
           <span style={{ color: 'var(--text-secondary)', fontSize: '2rem' }}>다른 브랜드를 선택하셔도 좋습니다.</span>
         </h2>
-        <div className="glass-panel" style={{ display: 'inline-block', padding: '1.5rem 3rem', border: '1px solid var(--accent-blue)', marginBottom: '2rem' }}>
+        <div className="glass-panel" style={{ display: 'inline-block', padding: '1.5rem 3rem', border: '1px solid var(--accent-gold)', marginBottom: '2rem' }}>
           <p style={{ fontSize: '1.4rem', fontWeight: 600, lineHeight: 1.5, wordBreak: 'keep-all' }}>
             나의 일상에 편리함과 삶의 가치를 높여줄 가전은<br />
-            <span className="text-gradient" style={{ fontSize: '1.8rem', fontWeight: 800 }}>AI 가전 = 삼성</span> 밖에 없습니다.
+            <span className="text-gradient" style={{ fontSize: '1.8rem' }}>AI 가전 = 삼성</span> 밖에 없습니다.
           </p>
         </div>
         <p style={{ color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto', lineHeight: 1.8, fontSize: '1.1rem' }}>
@@ -59,14 +59,14 @@ export default function WhySamsung({ onBack }) {
         ))}
       </div>
 
-      <div className="glass-panel" style={{ marginTop: '4rem', textAlign: 'center', background: 'linear-gradient(rgba(0, 116, 228, 0.03), rgba(99, 102, 241, 0.03))', border: '1px solid rgba(0, 116, 228, 0.15)' }}>
+      <div className="glass-panel" style={{ marginTop: '4rem', textAlign: 'center', borderTop: '4px solid var(--accent-gold)' }}>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>전문가와 상담하세요</h3>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
           삼성 가전의 진정한 가치는 라이프스타일에 맞는 최적의 배치와 구성에서 완성됩니다.<br />
           17년 경력의 JCC가 직접 도와드리겠습니다.
         </p>
         {/* Note: In a real app, this would use a navigation function passed via props */}
-        <p style={{ color: 'var(--accent-blue)', fontWeight: 600 }}>상담 예약 메뉴에서 조준석을 찾아주세요.</p>
+        <p style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>상담 예약 메뉴에서 조준석을 찾아주세요.</p>
       </div>
     </section>
   );
