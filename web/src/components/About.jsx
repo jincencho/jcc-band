@@ -81,12 +81,15 @@ export default function About({ onNavigateToWhySamsung }) {
         {/* 왼쪽: 프로필 카드 */}
         <div className="glass-panel" style={{ flex: '1', minWidth: '260px', maxWidth: '320px', textAlign: 'center', borderTop: '4px solid var(--accent-blue)' }}>
           <div style={{
-            width: '100px', height: '100px', borderRadius: '50%', margin: '0 auto 1.5rem',
-            background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '2.5rem', boxShadow: '0 8px 24px rgba(59,130,246,0.3)'
+            width: '120px', height: '120px', borderRadius: '50%', margin: '0 auto 1.5rem',
+            overflow: 'hidden', border: '3px solid var(--accent-gold)',
+            boxShadow: '0 8px 24px rgba(197, 160, 89, 0.3)'
           }}>
-            👨‍💼
+            <img 
+              src="/images/profile.jpg" 
+              alt="조준석 매니저" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>조준석</h3>
           <p style={{ color: 'var(--accent-blue)', fontWeight: 600, marginBottom: '1.5rem', fontSize: '0.9rem', letterSpacing: '1px' }}>
