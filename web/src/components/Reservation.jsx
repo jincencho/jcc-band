@@ -1,94 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Reservation() {
-  const [view, setView] = useState('selection'); // 'selection', 'premium', 'quote'
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    topic: '신혼가전',
-    date: '',
-    time: null,
-    details: '' // 비대면 견적 시 추가 상세 정보
-  });
-  const [status, setStatus] = useState('idle');
-  const [blockedData, setBlockedData] = useState({});
-  const [currentDate, setCurrentDate] = useState(new Date());
-
-  useEffect(() => {
-    const saved = localStorage.getItem('jcc_blocked_times_v2');
-    if (saved) {
-      setBlockedData(JSON.parse(saved));
-    }
-  }, [status]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const workingHours = [10, 11, 12, 13, 14, 15, 16, 17];
-
-  const isTimeAvailable = (hour) => {
-    if (!formData.date) return false;
-    const dayData = blockedData[formData.date] || { hours: [], reason: null };
-    if (dayData.reason) return false; 
-    const neededHours = [hour, hour + 1, hour + 2];
-    const conflict = neededHours.some(h => dayData.hours.includes(h));
-    return !conflict;
-  };
-
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const firstDayIndex = new Date(year, month, 1).getDay();
-
-  const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
-  const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
-  const formatMonth = `${year}년 ${month + 1}월`;
-
-  const renderCalendar = () => {
-    const days = [];
-    const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
-    weekDays.forEach(day => {
-      days.push(<div key={`header-${day}`} style={{ textAlign: 'center', fontWeight: 'bold', padding: '0.5rem', color: day === '일' ? '#ef4444' : day === '토' ? '#3b82f6' : 'var(--text-secondary)' }}>{day}</div>);
-    });
-    for (let i = 0; i < firstDayIndex; i++) {
-      days.push(<div key={`empty-${i}`} style={{ padding: '0.5rem' }}></div>);
+    if (e.target.name === 'photo') {
+      setSelectedFile(e.target.files[0]);
+    } else {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     }
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    for (let i = 1; i <= daysInMonth; i++) {
-      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-      const cellDate = new Date(year, month, i);
-      const isSelected = formData.date === dateStr;
-      const dayData = blockedData[dateStr];
-      const isCompletelyBlocked = dayData?.reason !== null && dayData?.reason !== undefined;
-      const isPast = cellDate < today;
-      const isDisabled = isCompletelyBlocked || isPast;
-
-      days.push(
-        <div 
-          key={i} 
-          onClick={() => {
-            if (!isDisabled) {
-              setFormData({ ...formData, date: dateStr, time: null });
-            }
-          }}
-          style={{ 
-            padding: '0.5rem', textAlign: 'center', 
-            border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--glass-border)',
-            borderRadius: '8px',
-            background: isSelected ? 'rgba(197, 160, 89, 0.2)' : isDisabled ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.05)',
-            cursor: isDisabled ? 'not-allowed' : 'pointer',
-            opacity: isDisabled ? 0.4 : 1,
-            display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '60px'
-          }}
-        >
-          <span style={{ fontWeight: 600, color: isDisabled ? 'var(--text-secondary)' : 'white' }}>{i}</span>
-          {isCompletelyBlocked && <span style={{ fontSize: '0.6rem', background: '#ef4444', color: 'white', padding: '2px 4px', borderRadius: '4px', marginTop: '2px' }}>마감</span>}
-        </div>
-      );
-    }
-    return days;
   };
 
   const handleSubmit = async (e) => {
@@ -118,11 +38,25 @@ export default function Reservation() {
       
       message += `\n_JCC 진센조 시스템_`;
 
+      // 1. 텍스트 메시지 전송
       await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
       });
+
+      // 2. 사진이 있으면 사진 전송
+      if (view === 'quote' && selectedFile) {
+        const fileData = new FormData();
+        fileData.append('chat_id', CHAT_ID);
+        fileData.append('photo', selectedFile);
+        fileData.append('caption', `📷 ${formData.name}님의 첨부 사진`);
+
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendPhoto`, {
+          method: 'POST',
+          body: fileData
+        });
+      }
 
       if (view === 'premium') {
         const newBlocked = { ...blockedData };
@@ -134,6 +68,7 @@ export default function Reservation() {
 
       setStatus('success');
       setFormData({ name: '', phone: '', topic: '신혼가전', date: '', time: null, details: '' });
+      setSelectedFile(null);
       setTimeout(() => {
         setStatus('idle');
         setView('selection');
@@ -181,6 +116,14 @@ export default function Reservation() {
       >
         ← 이전으로 돌아가기
       </button>
+
+      {view === 'quote' && (
+        <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', padding: '1rem', borderRadius: '12px', marginBottom: '1rem' }}>
+          <p style={{ color: '#fca5a5', fontSize: '0.85rem', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
+            ⚠️ 안내: 타 매장에서 이미 계약(결제)을 완료하신 건에 대해서는 추가 견적 안내가 불가능합니다. 신규 상담 건에 대해서만 최적의 견적을 제안해 드립니다.
+          </p>
+        </div>
+      )}
 
       <div className="form-group">
         <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>성함</label>
@@ -266,15 +209,26 @@ export default function Reservation() {
       )}
 
       {view === 'quote' && (
-        <div className="form-group">
-          <label htmlFor="details" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>추가 요청 사항 (선택)</label>
-          <textarea 
-            id="details" name="details"
-            value={formData.details} onChange={handleChange}
-            placeholder="원하시는 제품이나 예산 등을 자유롭게 적어주세요."
-            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem', minHeight: '100px', resize: 'vertical' }}
-          />
-        </div>
+        <>
+          <div className="form-group">
+            <label htmlFor="details" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>추가 요청 사항 (선택)</label>
+            <textarea 
+              id="details" name="details"
+              value={formData.details} onChange={handleChange}
+              placeholder="원하시는 제품이나 예산 등을 자유롭게 적어주세요."
+              style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem', minHeight: '100px', resize: 'vertical' }}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="photo" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>견적서 또는 평면도 첨부 (선택)</label>
+            <input 
+              type="file" id="photo" name="photo" accept="image/*"
+              onChange={handleChange}
+              style={{ width: '100%', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px dashed var(--glass-border)', color: 'var(--text-secondary)', fontSize: '0.9rem' }}
+            />
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.</p>
+          </div>
+        </>
       )}
 
       <button 
