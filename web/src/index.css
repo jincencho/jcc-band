@@ -1,24 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* --- [BACKUP: Gold Theme] ---
-  --bg-color: #0b0f19;
-  --accent-gold: #c5a059;
-  --accent-gold-light: #e8c98b;
-  --accent-gold-dark: #96752c;
-  --glass-border: rgba(197, 160, 89, 0.2);
+  /* --- [BACKUP: Dark Theme] ---
+  --bg-color: #0d1b3e;
+  --accent-gold: #3b82f6;
+  --text-primary: #ffffff;
+  --glass-border: rgba(59, 130, 246, 0.3);
   ---------------------------- */
 
-  --bg-color: #0d1b3e; /* Brighter Samsung Navy */
-  --text-primary: #ffffff;
-  --text-secondary: #cbd5e1;
-  --accent-gold: #3b82f6; /* Brighter Vibrant Blue */
-  --accent-gold-light: #93c5fd; /* Light Blue */
-  --accent-gold-dark: #1d4ed8; /* Strong Blue */
-  --accent-blue: #3b82f6; 
-  --accent-purple: #60a5fa;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(59, 130, 246, 0.3); /* More visible blue border */
+  --bg-color: #f8fafc; /* Bright Off-white/Silver */
+  --text-primary: #0f172a; /* Deep Navy Text */
+  --text-secondary: #475569;
+  --accent-gold: #0074e4; /* Samsung Official Blue */
+  --accent-gold-light: #2563eb;
+  --accent-gold-dark: #1d4ed8;
+  --accent-blue: #0074e4; 
+  --accent-purple: #3b82f6;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 116, 228, 0.2);
 }
 
 * {
@@ -49,8 +48,8 @@ body {
 
 .glass-panel:hover {
   transform: translateY(-5px);
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+  border-color: rgba(0, 116, 228, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(0, 116, 228, 0.15);
 }
 
 /* Text Gradients */
@@ -98,25 +97,27 @@ body {
 }
 
 .btn-back {
-  background: transparent;
-  color: var(--accent-gold-light);
+  background: white;
+  color: var(--accent-gold);
   border: 1px solid var(--accent-gold);
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 116, 228, 0.1);
 }
 
 .btn-back:hover {
-  background: rgba(197, 160, 89, 0.15);
-  border-color: var(--accent-gold-light);
+  background: var(--accent-gold);
+  color: white;
   transform: translateX(-5px);
+  box-shadow: 0 6px 15px rgba(0, 116, 228, 0.2);
 }
 
 /* CTA Pulse Animation */
