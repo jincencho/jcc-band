@@ -64,13 +64,13 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
             백화점과 로드샵의 혜택을 <strong style={{ color: 'var(--text-primary)' }}>한 번에 종결하세요.</strong>
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-            <button className="btn-primary pulse" onClick={onNavigateToReservation}>
+            <button className="btn-primary pulse" onClick={onNavigateToReservation} style={{ flex: 1, minWidth: '160px' }}>
               지금 바로 상담예약 📅
             </button>
-            <button className="btn-secondary" onClick={onNavigateToAbout}>
+            <button className="btn-secondary" onClick={onNavigateToAbout} style={{ flex: 1, minWidth: '160px' }}>
               조준석 약력 확인하기 🔍
             </button>
-            <button className="glass-panel" onClick={handleShare} style={{ width: '100%', padding: '0.75rem', marginTop: '0.5rem', background: 'rgba(197, 160, 89, 0.05)', color: 'var(--accent-gold-light)', border: '1px dashed var(--accent-gold)', fontSize: '0.9rem' }}>
+            <button className="btn-secondary" onClick={handleShare} style={{ flex: 1, minWidth: '160px', borderStyle: 'dashed' }}>
               주변에 공유하기 🔗
             </button>
           </div>

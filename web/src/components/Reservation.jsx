@@ -106,8 +106,6 @@ export default function Reservation({ onBack }) {
     setStatus('loading');
 
     try {
-      const TELEGRAM_TOKEN = '8722162859:AAFXVsi2rRNaqybfb4h5CeD9eFme-APzlFQ';
-      const CHAT_ID = '1294140235';
       const getTimeRange = (hour) => {
         if (hour === 9) return "09:00 ~ 12:00";
         if (hour === 14) return "14:00 ~ 17:00";
@@ -132,24 +130,27 @@ export default function Reservation({ onBack }) {
       
       message += `\n_JCC 진센조 시스템_`;
 
-      // 1. 텍스트 메시지 전송
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+      // 1. 텍스트 메시지 전송 (서버 사이드 API 호출)
+      const textRes = await fetch(`/api/send-telegram`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+        body: JSON.stringify({ message })
       });
+
+      if (!textRes.ok) throw new Error('메시지 전송 실패');
 
       // 2. 사진이 있으면 사진 전송
       if (view === 'quote' && selectedFile) {
         const fileData = new FormData();
-        fileData.append('chat_id', CHAT_ID);
         fileData.append('photo', selectedFile);
         fileData.append('caption', `📷 ${formData.name}님의 첨부 사진`);
 
-        await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendPhoto`, {
+        const photoRes = await fetch(`/api/send-telegram`, {
           method: 'POST',
           body: fileData
         });
+        
+        if (!photoRes.ok) console.error('사진 전송 실패');
       }
 
       if (view === 'premium') {
