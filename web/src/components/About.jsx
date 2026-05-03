@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function About({ onNavigateToWhySamsung }) {
+export default function About({ onNavigateToWhySamsung, onBack }) {
   const career = [
     {
       year: '2007.03',
