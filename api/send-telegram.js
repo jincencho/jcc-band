@@ -20,15 +20,22 @@ export default async function handler(req, res) {
   const contentType = req.headers['content-type'] || '';
   
   try {
+    const chunks = [];
+    for await (const chunk of req) {
+      chunks.push(chunk);
+    }
+    const rawBody = Buffer.concat(chunks).toString();
+    
+    let body = {};
+    let isMultipart = contentType.includes('multipart/form-data');
+    
     if (contentType.includes('application/json')) {
-      // Handle Text Only
-      const chunks = [];
-      for await (const chunk of req) {
-        chunks.push(chunk);
-      }
-      const body = JSON.parse(Buffer.concat(chunks).toString());
-      
-      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      body = JSON.parse(rawBody);
+    }
+
+    // 1. Send Text Message to Telegram
+    if (body.message) {
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -37,25 +44,31 @@ export default async function handler(req, res) {
           parse_mode: 'Markdown'
         })
       });
-      const data = await response.json();
-      return res.status(response.status).json(data);
-    } 
+    }
+
+    // 2. Send Data to Google Sheets (if URL is set)
+    if (process.env.GOOGLE_SHEET_URL && body.message) {
+      // Parse structured data from message or pass raw body
+      // We can pass a cleaner version for the sheet
+      await fetch(process.env.GOOGLE_SHEET_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body.formData || { raw: body.message })
+      });
+    }
     
-    if (contentType.includes('multipart/form-data')) {
-      // Proxy the multipart request directly to Telegram
-      // We can use the raw request stream
+    if (isMultipart) {
+      // Proxy the multipart request directly to Telegram for photos
       const response = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
         method: 'POST',
-        headers: {
-          'Content-Type': contentType
-        },
-        body: req // Stream the request body
+        headers: { 'Content-Type': contentType },
+        body: Buffer.concat(chunks) // Forward the raw multipart body
       });
       const data = await response.json();
       return res.status(response.status).json(data);
     }
 
-    res.status(400).json({ error: 'Unsupported content type' });
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error('Proxy Error:', error);
     res.status(500).json({ error: error.message });

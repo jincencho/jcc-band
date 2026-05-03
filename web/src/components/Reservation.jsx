@@ -134,7 +134,10 @@ export default function Reservation({ onBack }) {
       const textRes = await fetch(`/api/send-telegram`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ 
+          message,
+          formData: { ...formData, view } // Pass structured data for Google Sheets
+        })
       });
 
       if (!textRes.ok) throw new Error('메시지 전송 실패');
