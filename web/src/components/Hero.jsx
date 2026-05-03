@@ -45,6 +45,12 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
 
         {/* Right Side: Text */}
         <div style={{ flex: '1', minWidth: '300px' }}>
+          <div style={{ display: 'inline-block', padding: '0.4rem 1rem', background: 'rgba(197, 160, 89, 0.1)', borderRadius: '100px', border: '1px solid var(--accent-gold)', marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--accent-gold-light)', margin: 0 }}>
+              <span style={{ marginRight: '0.5rem' }}>💡</span>
+              <strong>진센조란?</strong> 조준석 매니저가 있는 진주에서 가전을 완벽하게 졸업했다는 뜻
+            </p>
+          </div>
           <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2, wordBreak: 'keep-all' }}>
             결국 가전은 진주에서<br />
             <span className="text-gradient">완벽하게 졸업했다</span>
