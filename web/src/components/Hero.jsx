@@ -45,17 +45,17 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
 
         {/* Right Side: Text */}
         <div style={{ flex: '1', minWidth: '300px' }}>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2 }}>
-            혼수 · 이사 · 입주 전문가,<br />
-            <span className="text-gradient">JCC (진센조)</span>
+          <h1 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2, wordBreak: 'keep-all' }}>
+            결국 가전은 진주에서<br />
+            <span className="text-gradient">완벽하게 졸업했다</span>
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '1rem', fontWeight: 300, wordBreak: 'keep-all', lineHeight: 1.8 }}>
             <strong style={{ color: 'var(--text-primary)', letterSpacing: '1px', fontSize: '0.95rem' }}>JINJU CENTUM CHOJUNSEOK</strong>
           </p>
           <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '560px', marginBottom: '2.5rem', fontWeight: 300, wordBreak: 'keep-all', lineHeight: 1.9 }}>
-            경남 진주에 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>을 운영 중입니다.<br />
-            <strong style={{ color: 'var(--text-primary)' }}>백화점</strong>과 <strong style={{ color: 'var(--text-primary)' }}>로드샵</strong>의 정책을<br />
-            <strong style={{ color: 'var(--text-primary)' }}>한 곳에서 한 번에</strong> 이용하세요.
+            이곳저곳 비교하며 쌓인 피로를 덜어드립니다.<br />
+            경남 진주 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>에서<br />
+            백화점과 로드샵의 혜택을 <strong style={{ color: 'var(--text-primary)' }}>한 번에 종결하세요.</strong>
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
             <button className="btn-primary pulse" onClick={onNavigateToReservation} style={{ flex: 1, minWidth: '200px' }}>
