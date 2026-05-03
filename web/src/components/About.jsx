@@ -90,6 +90,8 @@ export default function About({ onNavigateToWhySamsung }) {
             { id: 'eyKZ0sKpZK4', title: '삼성 AI 가전 2', url: 'https://youtu.be/eyKZ0sKpZK4?si=uqexYUr-LAVHlG2w' },
             { id: 'wlB0MAocZAg', title: '삼성 AI 가전 3', url: 'https://youtu.be/wlB0MAocZAg?si=ZRfgp16Rr80r-ycE' },
             { id: 'V_9Z1q5dDxk', title: '삼성 AI 가전 4', url: 'https://youtu.be/V_9Z1q5dDxk?si=Ajb2qB6M8qWvLsKF' },
+            { id: 'pVIYIYe_Cl4', title: '삼성 AI 가전 5', url: 'https://youtu.be/pVIYIYe_Cl4?si=NzYviICqJ7XH7ZSp' },
+            { id: '0xZgFIsBcGg', title: '삼성 AI 가전 6', url: 'https://youtu.be/0xZgFIsBcGg?si=CQKUzaen_Ax1yKDY' },
           ].map((video, idx) => (
             <a 
               key={idx} 
