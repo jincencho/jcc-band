@@ -9,16 +9,16 @@
   --glass-border: rgba(197, 160, 89, 0.2);
   ---------------------------- */
 
-  --bg-color: #030b1e; /* Samsung Deep Navy */
+  --bg-color: #0d1b3e; /* Brighter Samsung Navy */
   --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --accent-gold: #0074e4; /* Samsung Vibrant Blue */
-  --accent-gold-light: #60a5fa; /* Sky Blue */
-  --accent-gold-dark: #1e3a8a; /* Deep Blue */
-  --accent-blue: #0074e4; 
-  --accent-purple: #3b82f6;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(59, 130, 246, 0.2); /* Blue tinted border */
+  --text-secondary: #cbd5e1;
+  --accent-gold: #3b82f6; /* Brighter Vibrant Blue */
+  --accent-gold-light: #93c5fd; /* Light Blue */
+  --accent-gold-dark: #1d4ed8; /* Strong Blue */
+  --accent-blue: #3b82f6; 
+  --accent-purple: #60a5fa;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(59, 130, 246, 0.3); /* More visible blue border */
 }
 
 * {
