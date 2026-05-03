@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Reservation() {
+  const [view, setView] = useState('selection'); // 'selection', 'premium', 'quote'
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    topic: '신혼가전',
+    date: '',
+    time: null,
+    details: '' // 비대면 견적 시 추가 상세 정보
+  });
+  const [status, setStatus] = useState('idle');
+  const [blockedData, setBlockedData] = useState({});
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedFile, setSelectedFile] = useState(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('jcc_blocked_times_v2');
+    if (saved) {
+      setBlockedData(JSON.parse(saved));
+    }
+  }, [status]);
 
   const handleChange = (e) => {
     if (e.target.name === 'photo') {
@@ -9,6 +28,72 @@ export default function Reservation() {
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
+  };
+
+  const workingHours = [10, 11, 12, 13, 14, 15, 16, 17];
+
+  const isTimeAvailable = (hour) => {
+    if (!formData.date) return false;
+    const dayData = blockedData[formData.date] || { hours: [], reason: null };
+    if (dayData.reason) return false; 
+    const neededHours = [hour, hour + 1, hour + 2];
+    const conflict = neededHours.some(h => dayData.hours.includes(h));
+    return !conflict;
+  };
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDayIndex = new Date(year, month, 1).getDay();
+
+  const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
+  const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
+  const formatMonth = `${year}년 ${month + 1}월`;
+
+  const renderCalendar = () => {
+    const days = [];
+    const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
+    weekDays.forEach(day => {
+      days.push(<div key={`header-${day}`} style={{ textAlign: 'center', fontWeight: 'bold', padding: '0.5rem', color: day === '일' ? '#ef4444' : day === '토' ? '#3b82f6' : 'var(--text-secondary)' }}>{day}</div>);
+    });
+    for (let i = 0; i < firstDayIndex; i++) {
+      days.push(<div key={`empty-${i}`} style={{ padding: '0.5rem' }}></div>);
+    }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    for (let i = 1; i <= daysInMonth; i++) {
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+      const cellDate = new Date(year, month, i);
+      const isSelected = formData.date === dateStr;
+      const dayData = blockedData[dateStr];
+      const isCompletelyBlocked = dayData?.reason !== null && dayData?.reason !== undefined;
+      const isPast = cellDate < today;
+      const isDisabled = isCompletelyBlocked || isPast;
+
+      days.push(
+        <div 
+          key={i} 
+          onClick={() => {
+            if (!isDisabled) {
+              setFormData({ ...formData, date: dateStr, time: null });
+            }
+          }}
+          style={{ 
+            padding: '0.5rem', textAlign: 'center', 
+            border: isSelected ? '2px solid var(--accent-gold)' : '1px solid var(--glass-border)',
+            borderRadius: '8px',
+            background: isSelected ? 'rgba(197, 160, 89, 0.2)' : isDisabled ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.05)',
+            cursor: isDisabled ? 'not-allowed' : 'pointer',
+            opacity: isDisabled ? 0.4 : 1,
+            display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '60px'
+          }}
+        >
+          <span style={{ fontWeight: 600, color: isDisabled ? 'var(--text-secondary)' : 'white' }}>{i}</span>
+          {isCompletelyBlocked && <span style={{ fontSize: '0.6rem', background: '#ef4444', color: 'white', padding: '2px 4px', borderRadius: '4px', marginTop: '2px' }}>마감</span>}
+        </div>
+      );
+    }
+    return days;
   };
 
   const handleSubmit = async (e) => {
