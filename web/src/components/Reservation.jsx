@@ -235,41 +235,6 @@ export default function Reservation() {
         </div>
       )}
 
-      <div className="form-group">
-        <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>성함</label>
-        <input 
-          type="text" id="name" name="name" required
-          value={formData.name} onChange={handleChange}
-          placeholder="홍길동"
-          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>연락처</label>
-        <input 
-          type="tel" id="phone" name="phone" required
-          value={formData.phone} onChange={handleChange}
-          placeholder="010-0000-0000"
-          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
-        />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="topic" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>상담 분야</label>
-        <select 
-          id="topic" name="topic"
-          value={formData.topic} onChange={handleChange}
-          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: '#1e293b', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
-        >
-          <option value="신혼가전">신혼가전</option>
-          <option value="이사가전">이사가전</option>
-          <option value="입주가전">입주가전</option>
-          <option value="단품구매">단품구매 (TV, 냉장고 등)</option>
-          <option value="기타상담">기타 상담</option>
-        </select>
-      </div>
-
       {view === 'premium' && (
         <>
           <div className="form-group">
@@ -318,8 +283,44 @@ export default function Reservation() {
               </div>
             </div>
           )}
+          <div style={{ borderBottom: '1px solid var(--glass-border)', margin: '1rem 0' }}></div>
         </>
       )}
+
+      <div className="form-group">
+        <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>성함</label>
+        <input 
+          type="text" id="name" name="name" required
+          value={formData.name} onChange={handleChange}
+          placeholder="홍길동"
+          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>연락처</label>
+        <input 
+          type="tel" id="phone" name="phone" required
+          value={formData.phone} onChange={handleChange}
+          placeholder="010-0000-0000"
+          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="topic" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>상담 분야</label>
+        <select 
+          id="topic" name="topic"
+          value={formData.topic} onChange={handleChange}
+          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: '#1e293b', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
+        >
+          <option value="신혼가전">신혼가전</option>
+          <option value="이사가전">이사가전</option>
+          <option value="입주가전">입주가전</option>
+          <option value="단품구매">단품구매 (TV, 냉장고 등)</option>
+          <option value="기타상담">기타 상담</option>
+        </select>
+      </div>
 
       {view === 'quote' && (
         <>
