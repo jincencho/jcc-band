@@ -5,6 +5,7 @@ export default function Reservation() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    phone2: '', // 보조 연락처
     topic: '신혼가전',
     date: '',
     time: null,
@@ -119,7 +120,8 @@ export default function Reservation() {
       let message = 
         `📣 *JCC 신규 접수 (${typeLabel})*\n\n` +
         `👤 *성함:* ${formData.name}\n` +
-        `📞 *연락처:* ${formData.phone}\n` +
+        `📞 *연락처1:* ${formData.phone}\n` +
+        (formData.phone2 ? `📞 *연락처2:* ${formData.phone2}\n` : '') +
         `🏷️ *상담 분야:* ${formData.topic}\n`;
 
       if (view === 'premium') {
@@ -289,10 +291,20 @@ export default function Reservation() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>연락처</label>
+        <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>연락처 1</label>
         <input 
           type="tel" id="phone" name="phone" required
           value={formData.phone} onChange={handleChange}
+          placeholder="010-0000-0000"
+          style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="phone2" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>연락처 2 (선택 사항)</label>
+        <input 
+          type="tel" id="phone2" name="phone2"
+          value={formData.phone2} onChange={handleChange}
           placeholder="010-0000-0000"
           style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
         />
