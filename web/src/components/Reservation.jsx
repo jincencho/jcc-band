@@ -214,13 +214,6 @@ export default function Reservation({ onBack }) {
 
   const renderForm = () => (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-      <button 
-        type="button" 
-        onClick={() => setView('selection')}
-        style={{ background: 'transparent', border: 'none', color: 'var(--accent-gold)', cursor: 'pointer', textAlign: 'left', fontSize: '0.9rem', marginBottom: '1rem' }}
-      >
-        ← 이전으로 돌아가기
-      </button>
 
       {/* 공통 주의사항 안내 (비대면/방문 공통) */}
       <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', padding: '1rem', borderRadius: '12px', marginBottom: '1rem' }}>
