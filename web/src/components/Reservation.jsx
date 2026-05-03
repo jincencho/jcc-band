@@ -30,15 +30,15 @@ export default function Reservation() {
     }
   };
 
-  const workingHours = [10, 11, 12, 13, 14, 15, 16, 17];
+  const workingHours = [9, 14, 17];
 
   const isTimeAvailable = (hour) => {
     if (!formData.date) return false;
     const dayData = blockedData[formData.date] || { hours: [], reason: null };
     if (dayData.reason) return false; 
-    const neededHours = [hour, hour + 1, hour + 2];
-    const conflict = neededHours.some(h => dayData.hours.includes(h));
-    return !conflict;
+    
+    // 선택한 시작 시간(9, 14, 17)이 이미 차단된 시간 목록에 있는지 확인
+    return !dayData.hours.includes(hour);
   };
 
   const year = currentDate.getFullYear();
@@ -107,6 +107,13 @@ export default function Reservation() {
     try {
       const TELEGRAM_TOKEN = '8722162859:AAFXVsi2rRNaqybfb4h5CeD9eFme-APzlFQ';
       const CHAT_ID = '1294140235';
+      const getTimeRange = (hour) => {
+        if (hour === 9) return "09:00 ~ 12:00";
+        if (hour === 14) return "14:00 ~ 17:00";
+        if (hour === 17) return "17:00 ~ 20:00";
+        return `${hour}:00`;
+      };
+      
       const typeLabel = view === 'premium' ? '🏆 프리미엄 상담 예약' : '📧 비대면 견적 요청';
       
       let message = 
@@ -116,7 +123,7 @@ export default function Reservation() {
         `🏷️ *상담 분야:* ${formData.topic}\n`;
 
       if (view === 'premium') {
-        message += `📆 *방문 날짜:* ${formData.date}\n⏰ *시작 시간:* ${formData.time}:00 (최대 3시간)\n`;
+        message += `📆 *방문 날짜:* ${formData.date}\n⏰ *상담 시간:* ${getTimeRange(formData.time)}\n`;
       } else {
         message += `📝 *상세 내용:* ${formData.details || '없음'}\n`;
       }
@@ -146,7 +153,7 @@ export default function Reservation() {
       if (view === 'premium') {
         const newBlocked = { ...blockedData };
         if (!newBlocked[formData.date]) newBlocked[formData.date] = { hours: [], reason: null };
-        newBlocked[formData.date].hours.push(formData.time, formData.time + 1, formData.time + 2);
+        newBlocked[formData.date].hours.push(formData.time); // 해당 타임 슬롯(시작 시간) 차단
         localStorage.setItem('jcc_blocked_times_v2', JSON.stringify(newBlocked));
         setBlockedData(newBlocked);
       }
@@ -282,26 +289,29 @@ export default function Reservation() {
           {formData.date && (
             <div className="form-group">
               <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>상담 시작 시간 (최대 3시간 진행)</label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.75rem' }}>
                 {workingHours.map(hour => {
                   const available = isTimeAvailable(hour);
                   const isSelected = formData.time === hour;
+                  const timeLabel = hour === 9 ? "09:00 ~ 12:00" : hour === 14 ? "14:00 ~ 17:00" : "17:00 ~ 20:00";
                   return (
                     <button
                       key={hour} type="button"
                       onClick={() => available && setFormData({ ...formData, time: hour })}
                       disabled={!available}
                       style={{
-                        padding: '0.75rem 0.5rem', borderRadius: '8px', border: '1px solid',
+                        padding: '1rem', borderRadius: '8px', border: '1px solid',
                         borderColor: isSelected ? 'var(--accent-gold)' : 'var(--glass-border)',
                         background: isSelected ? 'var(--accent-gold)' : 'rgba(255,255,255,0.05)',
                         color: available ? 'white' : 'var(--text-secondary)',
                         cursor: available ? 'pointer' : 'not-allowed',
                         opacity: available ? 1 : 0.4,
-                        transition: 'all 0.2s'
+                        transition: 'all 0.2s',
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center'
                       }}
                     >
-                      {hour}:00
+                      <span style={{ fontWeight: 600 }}>{timeLabel}</span>
+                      <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>{available ? (isSelected ? '선택됨' : '예약 가능') : '마감'}</span>
                     </button>
                   );
                 })}
