@@ -93,7 +93,7 @@ export default function About({ onNavigateToWhySamsung }) {
           </div>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>조준석</h3>
           <p style={{ color: 'var(--accent-blue)', fontWeight: 600, marginBottom: '1.5rem', fontSize: '0.9rem', letterSpacing: '1px' }}>
-            JCC · 진센조 대표
+            진센조
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', textAlign: 'left' }}>
             {[
