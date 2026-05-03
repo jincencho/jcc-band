@@ -184,6 +184,15 @@ section {
     padding: 1.2rem !important;
   }
 
+  .nav-links {
+    gap: 0.8rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  nav {
+    padding: 1rem !important;
+  }
+
   /* Force stack on mobile */
   .mobile-stack {
     flex-direction: column !important;
