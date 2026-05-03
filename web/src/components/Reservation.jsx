@@ -360,7 +360,7 @@ export default function Reservation({ onBack }) {
         type="submit" 
         className="btn-primary pulse" 
         disabled={status === 'loading'}
-        style={{ marginTop: '1rem', padding: '1rem', fontSize: '1.1rem' }}
+        style={{ marginTop: '1rem', width: '100%' }}
       >
         {status === 'loading' ? '접수 중...' : status === 'success' ? '접수 완료!' : '신청하기'}
       </button>

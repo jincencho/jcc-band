@@ -169,7 +169,7 @@ export default function AdminSchedule({ onBack }) {
               placeholder="비밀번호"
               style={{ width: '100%', padding: '1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1.2rem', textAlign: 'center', letterSpacing: '4px' }}
             />
-            <button type="submit" className="btn-primary" style={{ padding: '1rem', fontSize: '1.1rem' }}>접속하기</button>
+            <button type="submit" className="btn-primary" style={{ width: '100%' }}>접속하기</button>
           </form>
         </div>
       </div>
