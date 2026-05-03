@@ -6,7 +6,7 @@ export default function Reservation() {
     name: '',
     phone: '',
     phone2: '', // 보조 연락처
-    topic: '신혼가전',
+    topic: '구독문의',
     date: '',
     time: null,
     details: '' // 비대면 견적 시 추가 상세 정보
@@ -317,11 +317,11 @@ export default function Reservation() {
           value={formData.topic} onChange={handleChange}
           style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: '#1e293b', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem' }}
         >
+          <option value="구독문의">구독문의</option>
           <option value="신혼가전">신혼가전</option>
           <option value="이사가전">이사가전</option>
           <option value="입주가전">입주가전</option>
           <option value="단품구매">단품구매 (TV, 냉장고 등)</option>
-          <option value="기타상담">기타 상담</option>
         </select>
       </div>
 
