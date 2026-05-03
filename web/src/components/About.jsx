@@ -59,12 +59,12 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <p style={{ color: 'var(--accent-blue)', fontWeight: 600, letterSpacing: '2px', marginBottom: '0.75rem', fontSize: '0.9rem' }}>ABOUT JCC</p>
         <h2 style={{ fontSize: '2.8rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.2 }}>
-          17년의 진심이 만든<br />
+          19년의 진심이 만든<br />
           <span className="text-gradient">가전 전문가, 조준석</span>
         </h2>
         <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.8, wordBreak: 'keep-all' }}>
           단순히 제품을 파는 것이 아닌, 고객의 라이프스타일에 맞는 최적의 솔루션을 제안합니다.
-          삼성맨으로서 17년, 여러분의 현명한 선택을 도와드리겠습니다.
+          삼성맨으로서 19년, 여러분의 현명한 선택을 도와드리겠습니다.
         </p>
       </div>
 
@@ -177,7 +177,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', textAlign: 'left' }}>
             {[
-              { label: '경력', value: '17년+' },
+              { label: '경력', value: '19년+' },
               { label: '출신', value: '울산' },
               { label: '현재', value: '경남 진주' },
               { label: '삼성 경력', value: '2007년~현재' },
@@ -227,7 +227,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-blue)' }}>Why Jinju? 진주를 선택한 이유</h3>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem' }}>
           저는 태어나고 자라며 오래 일해온 <strong style={{ color: 'var(--text-primary)' }}>울산 사람입니다.</strong><br />
-          2007년부터 삼성에서만 17년간 꾸준히 경력을 쌓아온 끝,<br />
+          2007년부터 삼성에서만 19년간 꾸준히 경력을 쌓아온 끝,<br />
           <strong style={{ color: 'var(--text-primary)' }}>2026년 4월</strong>, 저는 진주를 선택했습니다.
         </p>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem', marginTop: '1rem' }}>

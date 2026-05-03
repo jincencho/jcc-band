@@ -45,7 +45,7 @@ export default function WhySamsung({ onBack }) {
         </div>
         <p style={{ color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto', lineHeight: 1.8, fontSize: '1.1rem' }}>
           단순한 도구를 넘어 당신의 삶을 이해하는 똑똑한 동반자,<br />
-          17년 가전 전문가 조준석이 삼성 AI 가전을 확신하는 이유입니다.
+          19년 가전 전문가 조준석이 삼성 AI 가전을 확신하는 이유입니다.
         </p>
       </div>
 
@@ -63,7 +63,7 @@ export default function WhySamsung({ onBack }) {
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>전문가와 상담하세요</h3>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
           삼성 가전의 진정한 가치는 라이프스타일에 맞는 최적의 배치와 구성에서 완성됩니다.<br />
-          17년 경력의 JCC가 직접 도와드리겠습니다.
+          19년 경력의 JCC가 직접 도와드리겠습니다.
         </p>
         {/* Note: In a real app, this would use a navigation function passed via props */}
         <p style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>상담 예약 메뉴에서 조준석을 찾아주세요.</p>
