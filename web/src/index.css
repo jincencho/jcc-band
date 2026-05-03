@@ -1,16 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #0b0f19; /* Deep space dark */
-  --text-primary: #e2e8f0;
+  /* --- [BACKUP: Gold Theme] ---
+  --bg-color: #0b0f19;
+  --accent-gold: #c5a059;
+  --accent-gold-light: #e8c98b;
+  --accent-gold-dark: #96752c;
+  --glass-border: rgba(197, 160, 89, 0.2);
+  ---------------------------- */
+
+  --bg-color: #030b1e; /* Samsung Deep Navy */
+  --text-primary: #ffffff;
   --text-secondary: #94a3b8;
-  --accent-gold: #c5a059; /* Sophisticated gold */
-  --accent-gold-light: #e8c98b; /* Soft champagne */
-  --accent-gold-dark: #96752c; /* Deep bronze/gold */
-  --accent-blue: var(--accent-gold); /* Redirect for backward compatibility */
-  --accent-purple: var(--accent-gold-light);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(197, 160, 89, 0.2); /* Gold tinted border */
+  --accent-gold: #0074e4; /* Samsung Vibrant Blue */
+  --accent-gold-light: #60a5fa; /* Sky Blue */
+  --accent-gold-dark: #1e3a8a; /* Deep Blue */
+  --accent-blue: #0074e4; 
+  --accent-purple: #3b82f6;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(59, 130, 246, 0.2); /* Blue tinted border */
 }
 
 * {
@@ -112,14 +120,14 @@ body {
 }
 
 /* CTA Pulse Animation */
-@keyframes pulse-gold {
-  0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(197, 160, 89, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+@keyframes pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba(0, 116, 228, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 116, 228, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 116, 228, 0); }
 }
 
 .pulse {
-  animation: pulse-gold 2s infinite;
+  animation: pulse-blue 2s infinite;
 }
 
 /* Layout Utilities */
