@@ -169,24 +169,34 @@ export default function Reservation() {
       <button 
         className="glass-panel pulse" 
         onClick={() => setView('quote')}
-        style={{ padding: '2rem', textAlign: 'left', cursor: 'pointer', borderLeft: '4px solid var(--accent-gold)', width: '100%' }}
+        style={{ 
+          padding: '2rem 1.5rem', textAlign: 'left', cursor: 'pointer', 
+          borderLeft: '5px solid var(--accent-gold)', width: '100%',
+          background: 'rgba(255, 255, 255, 0.07)',
+          transition: 'all 0.3s ease'
+        }}
       >
-        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📧</div>
-        <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>비대면 견적 요청</h3>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.5 }}>
-          매장 방문 없이 카톡이나 문자로<br />가장 합리적인 견적을 먼저 받아보세요.
+        <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📧</div>
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', color: 'white' }}>비대면 견적 요청</h3>
+        <p style={{ color: '#cbd5e1', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
+          매장 방문 없이 <strong style={{ color: 'var(--accent-gold-light)' }}>카톡이나 문자</strong>로<br />가장 합리적인 견적을 먼저 받아보세요.
         </p>
       </button>
 
       <button 
         className="glass-panel" 
         onClick={() => setView('premium')}
-        style={{ padding: '2rem', textAlign: 'left', cursor: 'pointer', borderLeft: '4px solid #fff', width: '100%' }}
+        style={{ 
+          padding: '2rem 1.5rem', textAlign: 'left', cursor: 'pointer', 
+          borderLeft: '5px solid #ffffff', width: '100%',
+          background: 'rgba(255, 255, 255, 0.07)',
+          transition: 'all 0.3s ease'
+        }}
       >
-        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🏆</div>
-        <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>프리미엄 상담 예약</h3>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.5 }}>
-          조준석 매니저와 1:1 대면 상담을 통해<br />전문적인 가전 솔루션을 제공받으세요. (최대 3시간)
+        <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', color: 'white' }}>프리미엄 상담 예약</h3>
+        <p style={{ color: '#cbd5e1', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
+          조준석 매니저와 <strong style={{ color: 'white' }}>1:1 대면 상담</strong>을 통해<br />전문적인 가전 솔루션을 제공받으세요. (최대 3시간)
         </p>
       </button>
     </div>
