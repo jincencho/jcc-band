@@ -62,6 +62,19 @@ export default function About({ onNavigateToWhySamsung }) {
         </p>
       </div>
 
+      {/* 버튼 섹션 (서브 페이지 링크) */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+        <button 
+          onClick={onNavigateToWhySamsung}
+          className="btn-secondary pulse" 
+          style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.8rem', border: '2px solid var(--accent-gold)' }}
+        >
+          <span style={{ fontSize: '1.5rem' }}>💡</span>
+          <span>왜 삼성인가요? 핵심 이유 확인하기</span>
+          <span style={{ fontSize: '1.2rem' }}>→</span>
+        </button>
+      </div>
+
       {/* 왜 삼성인가요? (영상 갤러리) */}
       <div style={{ marginBottom: '5rem' }}>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: 'var(--accent-gold)' }}>
