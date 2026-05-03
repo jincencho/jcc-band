@@ -1,0 +1,8 @@
+{
+  "name": "jcc-root",
+  "private": true,
+  "scripts": {
+    "install-all": "cd web && npm install",
+    "build": "cd web && npm run build"
+  }
+}
