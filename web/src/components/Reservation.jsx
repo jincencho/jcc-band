@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Reservation() {
+export default function Reservation({ onBack }) {
   const [view, setView] = useState('selection'); // 'selection', 'premium', 'quote'
   const [formData, setFormData] = useState({
     name: '',
@@ -374,7 +374,13 @@ export default function Reservation() {
   );
 
   return (
-    <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', margin: '0 auto', borderTop: '4px solid var(--accent-gold)' }}>
+    <div className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
+      {onBack && (
+        <button onClick={onBack} className="btn-back">
+          <span>←</span> 이전으로 돌아가기
+        </button>
+      )}
+      <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', margin: '0 auto', borderTop: '4px solid var(--accent-gold)' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>
           {view === 'selection' ? '상담 방식 선택' : view === 'premium' ? '프리미엄 상담 예약' : '비대면 견적 요청'}

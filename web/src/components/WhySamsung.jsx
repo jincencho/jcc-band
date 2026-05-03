@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WhySamsung() {
+export default function WhySamsung({ onBack }) {
   const points = [
     {
       title: '압도적인 서비스 네트워크',
@@ -25,7 +25,12 @@ export default function WhySamsung() {
   ];
 
   return (
-    <section className="container" style={{ paddingTop: '4rem', paddingBottom: '6rem', maxWidth: '900px', margin: '0 auto' }}>
+    <section className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem', maxWidth: '900px', margin: '0 auto' }}>
+      {onBack && (
+        <button onClick={onBack} className="btn-back">
+          <span>←</span> 이전으로 돌아가기
+        </button>
+      )}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <p style={{ color: 'var(--accent-blue)', fontWeight: 600, letterSpacing: '2px', marginBottom: '0.75rem', fontSize: '0.9rem' }}>WHY SAMSUNG?</p>
         <h2 style={{ fontSize: '2.8rem', fontWeight: 700, marginBottom: '1.5rem', lineHeight: 1.2, wordBreak: 'keep-all' }}>

@@ -47,8 +47,14 @@ export default function About({ onNavigateToWhySamsung }) {
   ];
 
   return (
-    <section className="container" style={{ paddingTop: '4rem', paddingBottom: '6rem', maxWidth: '900px', margin: '0 auto' }}>
+    <section className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem', maxWidth: '900px', margin: '0 auto' }}>
       
+      {onBack && (
+        <button onClick={onBack} className="btn-back">
+          <span>←</span> 이전으로 돌아가기
+        </button>
+      )}
+
       {/* 헤더 */}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <p style={{ color: 'var(--accent-blue)', fontWeight: 600, letterSpacing: '2px', marginBottom: '0.75rem', fontSize: '0.9rem' }}>ABOUT JCC</p>

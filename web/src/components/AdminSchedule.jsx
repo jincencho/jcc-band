@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function AdminSchedule() {
+export default function AdminSchedule({ onBack }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   
@@ -151,8 +151,14 @@ export default function AdminSchedule() {
   // ---------------- Render Authentication ----------------
   if (!isAuthenticated) {
     return (
-      <section className="container" style={{ paddingTop: '10rem', minHeight: '80vh', display: 'flex', justifyContent: 'center' }}>
-        <div className="glass-panel" style={{ maxWidth: '400px', width: '100%', textAlign: 'center', padding: '3rem 2rem' }}>
+      <section className="container" style={{ paddingTop: '5rem', minHeight: '80vh' }}>
+        {onBack && (
+          <button onClick={onBack} className="btn-back">
+            <span>←</span> 홈으로 돌아가기
+          </button>
+        )}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="glass-panel" style={{ maxWidth: '400px', width: '100%', textAlign: 'center', padding: '3rem 2rem' }}>
           <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1rem' }}>관리자 모드</h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>비밀번호를 입력해주세요.</p>
           <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -173,6 +179,11 @@ export default function AdminSchedule() {
   // ---------------- Render Dashboard ----------------
   return (
     <section className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
+      {onBack && (
+        <button onClick={onBack} className="btn-back">
+          <span>←</span> 홈으로 돌아가기
+        </button>
+      )}
       <div className="glass-panel" style={{ maxWidth: '1000px', margin: '0 auto', borderTop: '4px solid var(--accent-purple)' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>관리자 스케줄 등록</h2>

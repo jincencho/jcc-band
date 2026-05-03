@@ -89,6 +89,28 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-back {
+  background: transparent;
+  color: var(--accent-gold-light);
+  border: 1px solid var(--accent-gold);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-back:hover {
+  background: rgba(197, 160, 89, 0.15);
+  border-color: var(--accent-gold-light);
+  transform: translateX(-5px);
+}
+
 /* CTA Pulse Animation */
 @keyframes pulse-gold {
   0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }

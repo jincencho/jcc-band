@@ -28,10 +28,10 @@ function App() {
 
       <main>
         {currentView === 'home' && <Hero onNavigateToReservation={() => setCurrentView('reservation')} onNavigateToAbout={() => setCurrentView('about')} />}
-        {currentView === 'about' && <About onNavigateToWhySamsung={() => setCurrentView('why-samsung')} />}
-        {currentView === 'why-samsung' && <WhySamsung />}
-        {currentView === 'reservation' && <Reservation />}
-        {currentView === 'admin' && <AdminSchedule />}
+        {currentView === 'about' && <About onNavigateToWhySamsung={() => setCurrentView('why-samsung')} onBack={() => setCurrentView('home')} />}
+        {currentView === 'why-samsung' && <WhySamsung onBack={() => setCurrentView('about')} />}
+        {currentView === 'reservation' && <Reservation onBack={() => setCurrentView('home')} />}
+        {currentView === 'admin' && <AdminSchedule onBack={() => setCurrentView('home')} />}
       </main>
 
       <footer style={{ textAlign: 'center', padding: '3rem 2rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--glass-border)', marginTop: '4rem' }}>
