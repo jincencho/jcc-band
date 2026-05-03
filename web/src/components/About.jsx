@@ -62,17 +62,77 @@ export default function About({ onNavigateToWhySamsung }) {
         </p>
       </div>
 
-      {/* 버튼 섹션 (서브 페이지 링크) */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem' }}>
-        <button 
-          onClick={onNavigateToWhySamsung}
-          className="btn-secondary pulse" 
-          style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.8rem', border: '2px solid var(--accent-gold)' }}
-        >
-          <span style={{ fontSize: '1.5rem' }}>💡</span>
-          <span>왜 삼성인가요? 핵심 이유 확인하기</span>
-          <span style={{ fontSize: '1.2rem' }}>→</span>
-        </button>
+      {/* 왜 삼성인가요? (영상 갤러리) */}
+      <div style={{ marginBottom: '5rem' }}>
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: 'var(--accent-gold)' }}>
+          🎞️ 왜 삼성인가요? (영상으로 보기)
+        </h3>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+          gap: '1.5rem' 
+        }}>
+          {[
+            { id: 'D9rgFRrK_Bw', title: '삼성 AI 가전 1', url: 'https://youtu.be/D9rgFRrK_Bw?si=2-4gLvnkX089BOe9' },
+            { id: 'eyKZ0sKpZK4', title: '삼성 AI 가전 2', url: 'https://youtu.be/eyKZ0sKpZK4?si=uqexYUr-LAVHlG2w' },
+            { id: 'wlB0MAocZAg', title: '삼성 AI 가전 3', url: 'https://youtu.be/wlB0MAocZAg?si=ZRfgp16Rr80r-ycE' },
+            { id: 'V_9Z1q5dDxk', title: '삼성 AI 가전 4', url: 'https://youtu.be/V_9Z1q5dDxk?si=Ajb2qB6M8qWvLsKF' },
+          ].map((video, idx) => (
+            <a 
+              key={idx} 
+              href={video.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="glass-panel"
+              style={{ 
+                padding: '0.5rem', 
+                textDecoration: 'none', 
+                color: 'inherit',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                cursor: 'pointer',
+                display: 'block'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.boxShadow = '0 12px 24px rgba(197, 160, 89, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <div style={{ 
+                position: 'relative', 
+                width: '100%', 
+                paddingTop: '56.25%', // 16:9 Aspect Ratio
+                borderRadius: '8px',
+                overflow: 'hidden',
+                marginBottom: '1rem'
+              }}>
+                <img 
+                  src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`} 
+                  alt={video.title}
+                  style={{ 
+                    position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover'
+                  }}
+                />
+                <div style={{ 
+                  position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', 
+                  background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  <div style={{ 
+                    width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(197, 160, 89, 0.8)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '1.5rem',
+                    paddingLeft: '4px'
+                  }}>▶</div>
+                </div>
+              </div>
+              <p style={{ fontSize: '0.9rem', fontWeight: 600, textAlign: 'center', margin: '0.5rem 0', color: 'var(--text-secondary)' }}>
+                영상 {idx + 1} 확인하기
+              </p>
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* 프로필 + 캐리어 타임라인 */}
