@@ -172,9 +172,10 @@ export default function AdminSchedule({ onBack }) {
             <button type="submit" className="btn-primary" style={{ padding: '1rem', fontSize: '1.1rem' }}>접속하기</button>
           </form>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
 
   // ---------------- Render Dashboard ----------------
   return (
@@ -184,7 +185,7 @@ export default function AdminSchedule({ onBack }) {
           <span>←</span> 홈으로 돌아가기
         </button>
       )}
-      <div className="glass-panel" style={{ maxWidth: '1000px', margin: '0 auto', borderTop: '4px solid var(--accent-purple)' }}>
+      <div className="glass-panel" style={{ maxWidth: '1000px', margin: '0 auto', borderTop: '4px solid var(--accent-blue)' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>관리자 스케줄 등록</h2>
           <p style={{ color: 'var(--text-secondary)' }}>달력에서 날짜를 선택하여 일정을 관리하세요.</p>

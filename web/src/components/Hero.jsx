@@ -23,12 +23,12 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
       {/* Background decoration */}
       <div style={{
         position: 'absolute', top: '-20%', right: '-10%', width: '500px', height: '500px',
-        background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(11,15,25,0) 70%)',
+        background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(11,15,25,0) 70%)',
         borderRadius: '50%', zIndex: -1
       }}></div>
       <div style={{
         position: 'absolute', bottom: '-10%', left: '-5%', width: '400px', height: '400px',
-        background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(11,15,25,0) 70%)',
+        background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(11,15,25,0) 70%)',
         borderRadius: '50%', zIndex: -1
       }}></div>
 
@@ -39,7 +39,7 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
           <img 
             src="/images/진센조 메인사진.png" 
             alt="진센조 메인사진" 
-            style={{ width: '100%', maxWidth: '500px', borderRadius: '24px', boxShadow: '0 20px 40px rgba(59, 130, 246, 0.2)', objectFit: 'cover', border: '1px solid var(--glass-border)' }}
+            style={{ width: '100%', maxWidth: '500px', borderRadius: '24px', boxShadow: '0 20px 40px rgba(212, 175, 55, 0.1)', objectFit: 'cover', border: '1px solid var(--glass-border)' }}
           />
         </div>
 

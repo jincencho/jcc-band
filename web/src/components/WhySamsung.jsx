@@ -59,7 +59,7 @@ export default function WhySamsung({ onBack }) {
         ))}
       </div>
 
-      <div className="glass-panel" style={{ marginTop: '4rem', textAlign: 'center', background: 'linear-gradient(rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+      <div className="glass-panel" style={{ marginTop: '4rem', textAlign: 'center', background: 'linear-gradient(rgba(0, 116, 228, 0.03), rgba(99, 102, 241, 0.03))', border: '1px solid rgba(0, 116, 228, 0.15)' }}>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>전문가와 상담하세요</h3>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
           삼성 가전의 진정한 가치는 라이프스타일에 맞는 최적의 배치와 구성에서 완성됩니다.<br />

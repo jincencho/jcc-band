@@ -73,7 +73,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         <button 
           onClick={onNavigateToWhySamsung}
           className="btn-secondary pulse" 
-          style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.8rem', border: '2px solid var(--accent-gold)' }}
+          style={{ padding: '1.2rem 2.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.8rem', border: '2px solid var(--accent-blue)' }}
         >
           <span style={{ fontSize: '1.5rem' }}>💡</span>
           <span>왜 삼성인가요? 핵심 이유 확인하기</span>
@@ -115,7 +115,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 12px 24px rgba(197, 160, 89, 0.2)';
+                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 116, 228, 0.15)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';

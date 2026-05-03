@@ -391,6 +391,7 @@ export default function Reservation({ onBack }) {
       </div>
 
       {view === 'selection' ? renderSelection() : renderForm()}
+      </div>
     </div>
   );
 }
