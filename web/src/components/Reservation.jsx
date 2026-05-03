@@ -219,21 +219,12 @@ export default function Reservation() {
         ← 이전으로 돌아가기
       </button>
 
-      {view === 'quote' && (
-        <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', padding: '1rem', borderRadius: '12px', marginBottom: '1rem' }}>
-          <p style={{ color: '#fca5a5', fontSize: '0.85rem', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
-            ⚠️ 안내: 타 매장에서 이미 계약(결제)을 완료하신 건에 대해서는 추가 견적 안내가 불가능합니다. 신규 상담 건에 대해서만 최적의 견적을 제안해 드립니다.
-          </p>
-        </div>
-      )}
-
-      {view === 'premium' && (
-        <div style={{ background: 'rgba(197, 160, 89, 0.1)', border: '1px solid var(--accent-gold)', padding: '1rem', borderRadius: '12px', marginBottom: '1rem' }}>
-          <p style={{ color: 'var(--accent-gold-light)', fontSize: '0.85rem', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
-            💡 안내: 혼수증빙, 이사증빙, 입주증빙 서류를 지참해 주시면 더욱 원활하고 정확한 상담이 가능합니다.
-          </p>
-        </div>
-      )}
+      {/* 공통 주의사항 안내 (비대면/방문 공통) */}
+      <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', padding: '1rem', borderRadius: '12px', marginBottom: '1rem' }}>
+        <p style={{ color: '#fca5a5', fontSize: '0.85rem', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
+          ⚠️ 주의: 타 매장에서 이미 계약(결제)을 완료하신 건에 대해서는 견적 안내가 불가능합니다. 신규 상담 건에 대해서만 최적의 솔루션을 제공합니다.
+        </p>
+      </div>
 
       {view === 'premium' && (
         <>
@@ -343,6 +334,14 @@ export default function Reservation() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.</p>
           </div>
         </>
+      )}
+
+      {view === 'premium' && (
+        <div style={{ background: 'rgba(197, 160, 89, 0.1)', border: '1px solid var(--accent-gold)', padding: '1rem', borderRadius: '12px', marginTop: '0.5rem' }}>
+          <p style={{ color: 'var(--accent-gold-light)', fontSize: '0.85rem', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
+            💡 안내: 혼수증빙, 이사증빙, 입주증빙 서류를 지참해 주시면 더욱 원활하고 정확한 상담이 가능합니다.
+          </p>
+        </div>
       )}
 
       <button 
