@@ -220,6 +220,14 @@ export default function Reservation() {
         </div>
       )}
 
+      {view === 'premium' && (
+        <div style={{ background: 'rgba(197, 160, 89, 0.1)', border: '1px solid var(--accent-gold)', padding: '1rem', borderRadius: '12px', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--accent-gold-light)', fontSize: '0.85rem', fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
+            💡 안내: 혼수증빙, 이사증빙, 입주증빙 서류를 지참해 주시면 더욱 원활하고 정확한 상담이 가능합니다.
+          </p>
+        </div>
+      )}
+
       <div className="form-group">
         <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>성함</label>
         <input 
