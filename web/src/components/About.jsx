@@ -72,7 +72,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
         <button 
           onClick={onNavigateToWhySamsung}
-          className="btn-secondary pulse" 
+          className="btn-primary pulse" 
         >
           <span>💡</span>
           <span>왜 삼성인가요? 핵심 이유 확인하기</span>
