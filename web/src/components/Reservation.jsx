@@ -327,27 +327,30 @@ export default function Reservation({ onBack }) {
         </select>
       </div>
 
+      {(view === 'quote' || view === 'premium') && (
+        <div className="form-group">
+          <label htmlFor="details" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>
+            {view === 'premium' ? '상담 전 추가 요청 사항 (선택)' : '추가 요청 사항 (선택)'}
+          </label>
+          <textarea 
+            id="details" name="details"
+            value={formData.details} onChange={handleChange}
+            placeholder={view === 'premium' ? "방문 시 미리 궁금하신 점이나 원하시는 제품군을 적어주시면 더 원활한 상담이 가능합니다." : "원하시는 제품이나 예산 등을 자유롭게 적어주세요."}
+            style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem', minHeight: '100px', resize: 'vertical' }}
+          />
+        </div>
+      )}
+
       {view === 'quote' && (
-        <>
-          <div className="form-group">
-            <label htmlFor="details" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>추가 요청 사항 (선택)</label>
-            <textarea 
-              id="details" name="details"
-              value={formData.details} onChange={handleChange}
-              placeholder="원하시는 제품이나 예산 등을 자유롭게 적어주세요."
-              style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', color: 'white', fontSize: '1rem', minHeight: '100px', resize: 'vertical' }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="photo" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>견적서 또는 평면도 첨부 (선택)</label>
-            <input 
-              type="file" id="photo" name="photo" accept="image/*"
-              onChange={handleChange}
-              style={{ width: '100%', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px dashed var(--glass-border)', color: 'var(--text-secondary)', fontSize: '0.9rem' }}
-            />
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.</p>
-          </div>
-        </>
+        <div className="form-group">
+          <label htmlFor="photo" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>견적서 또는 평면도 첨부 (선택)</label>
+          <input 
+            type="file" id="photo" name="photo" accept="image/*"
+            onChange={handleChange}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px dashed var(--glass-border)', color: 'var(--text-secondary)', fontSize: '0.9rem' }}
+          />
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.</p>
+        </div>
       )}
 
       {view === 'premium' && (
