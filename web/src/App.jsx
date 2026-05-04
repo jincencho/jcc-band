@@ -20,9 +20,18 @@ function App() {
       <nav style={{ padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--glass-border)', background: 'var(--bg-color)', position: 'sticky', top: 0, zIndex: 100 }}>
         <div 
           onClick={() => setCurrentView('home')}
-          style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.5px', cursor: 'pointer' }}
+          style={{ 
+            fontSize: '1.4rem', 
+            fontWeight: 900, 
+            letterSpacing: '4px', 
+            cursor: 'pointer',
+            background: 'linear-gradient(135deg, #D4AF37 0%, #F1D592 50%, #D4AF37 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textTransform: 'uppercase'
+          }}
         >
-          <span className="text-gradient">JCC</span>
+          JINCENCHO
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('home'); }} style={{ color: currentView === 'home' ? 'var(--text-primary)' : 'inherit', textDecoration: 'none' }}>홈</a>
