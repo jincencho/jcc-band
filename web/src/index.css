@@ -170,6 +170,22 @@ section {
   transform: translateY(2px) scale(0.96);
 }
 
+/* Floating Animation for Secondary CTA */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+}
+
+.float:hover {
+  animation-play-state: paused;
+}
+
 /* Layout Helpers */
 .flex-center {
   display: flex;
