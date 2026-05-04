@@ -66,8 +66,9 @@ export default function Reservation({ onBack }) {
       const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
       const cellDate = new Date(year, month, i);
       const isSelected = formData.date === dateStr;
-      const dayData = blockedData[dateStr];
-      const isCompletelyBlocked = dayData?.reason !== null && dayData?.reason !== undefined;
+      const dayData = blockedData[dateStr] || { hours: [], reason: null };
+      const isAllSlotsTaken = workingHours.every(h => dayData.hours.includes(h));
+      const isCompletelyBlocked = dayData.reason !== null || isAllSlotsTaken;
       const isPast = cellDate < today;
       const isDisabled = isCompletelyBlocked || isPast;
 
