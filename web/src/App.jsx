@@ -22,20 +22,35 @@ function App() {
           onClick={() => setCurrentView('home')}
           style={{ 
             cursor: 'pointer',
-            padding: '0.5rem 0'
+            padding: '0.4rem 0',
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: '0.1rem'
           }}
         >
-          <div style={{ 
-            fontFamily: "'Cinzel', serif", 
-            fontSize: '1.7rem', 
-            fontWeight: 800,
-            color: '#D4AF37',
-            letterSpacing: '5px',
-            textTransform: 'uppercase',
-            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+          <span style={{ 
+            fontFamily: "'Great Vibes', cursive", 
+            fontSize: '2.8rem',
+            background: 'linear-gradient(180deg, #f1d592 0%, #d4af37 50%, #b8860b 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginRight: '-0.3rem',
+            transform: 'translateY(5px)'
           }}>
-            JINCENCHO
-          </div>
+            J
+          </span>
+          <span style={{ 
+            fontFamily: "'Cinzel', serif", 
+            fontSize: '1.6rem', 
+            fontWeight: 800,
+            background: 'linear-gradient(180deg, #f1d592 0%, #d4af37 50%, #b8860b 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '3px',
+            textTransform: 'uppercase'
+          }}>
+            incencho
+          </span>
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('home'); }} style={{ color: currentView === 'home' ? 'var(--text-primary)' : 'inherit', textDecoration: 'none' }}>홈</a>
