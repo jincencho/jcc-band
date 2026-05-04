@@ -22,35 +22,23 @@ function App() {
           onClick={() => setCurrentView('home')}
           style={{ 
             cursor: 'pointer',
-            padding: '0.4rem 0',
+            height: '60px',
             display: 'flex',
-            alignItems: 'baseline',
-            gap: '0.1rem'
+            alignItems: 'center'
           }}
         >
-          <span style={{ 
-            fontFamily: "'Great Vibes', cursive", 
-            fontSize: '2.8rem',
-            background: 'linear-gradient(180deg, #f1d592 0%, #d4af37 50%, #b8860b 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            marginRight: '-0.3rem',
-            transform: 'translateY(5px)'
-          }}>
-            J
-          </span>
-          <span style={{ 
-            fontFamily: "'Cinzel', serif", 
-            fontSize: '1.6rem', 
-            fontWeight: 800,
-            background: 'linear-gradient(180deg, #f1d592 0%, #d4af37 50%, #b8860b 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            letterSpacing: '3px',
-            textTransform: 'uppercase'
-          }}>
-            incencho
-          </span>
+          <img 
+            src="/images/logo.png" 
+            alt="JINCENCHO" 
+            style={{ height: '100%', width: 'auto', objectFit: 'contain' }}
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <div style={{ display: 'none', color: 'var(--accent-gold)', fontWeight: 800, letterSpacing: '2px' }}>
+            JINCENCHO
+          </div>
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('home'); }} style={{ color: currentView === 'home' ? 'var(--text-primary)' : 'inherit', textDecoration: 'none' }}>홈</a>
