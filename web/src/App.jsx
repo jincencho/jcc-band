@@ -22,39 +22,21 @@ function App() {
           onClick={() => setCurrentView('home')}
           style={{ 
             cursor: 'pointer',
-            padding: '0.2rem 0',
             display: 'flex',
-            alignItems: 'baseline',
-            gap: '0',
-            filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.8))'
+            alignItems: 'center',
+            height: '50px'
           }}
         >
-          <span style={{ 
-            fontFamily: "'Great Vibes', cursive", 
-            fontSize: '3.4rem',
-            background: 'linear-gradient(180deg, #F9E29B 0%, #D4AF37 50%, #A67C00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            marginRight: '-0.4rem',
-            transform: 'translateY(10px)',
-            fontWeight: 400,
-            WebkitTextStroke: '0.5px #000'
-          }}>
-            J
-          </span>
-          <span style={{ 
-            fontFamily: "'Cinzel', serif", 
-            fontSize: '1.8rem', 
-            fontWeight: 900,
-            background: 'linear-gradient(180deg, #F9E29B 0%, #D4AF37 50%, #A67C00 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            WebkitTextStroke: '0.5px #000'
-          }}>
-            incencho
-          </span>
+          <img 
+            src="/images/logo_new.png" 
+            alt="JINCENCHO" 
+            style={{ 
+              height: '100%', 
+              width: 'auto',
+              objectFit: 'contain',
+              filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.2))'
+            }} 
+          />
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('home'); }} style={{ color: currentView === 'home' ? 'var(--text-primary)' : 'inherit', textDecoration: 'none' }}>홈</a>
