@@ -22,37 +22,17 @@ function App() {
           onClick={() => setCurrentView('home')}
           style={{ 
             cursor: 'pointer',
-            padding: '0.2rem 0',
+            height: '50px',
             display: 'flex',
-            alignItems: 'baseline',
-            gap: '0',
-            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
+            alignItems: 'center',
+            padding: '0.2rem 0'
           }}
         >
-          <span style={{ 
-            fontFamily: "'Great Vibes', cursive", 
-            fontSize: '3.2rem',
-            background: 'linear-gradient(180deg, #F1D592 0%, #D4AF37 50%, #B8860B 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            marginRight: '-0.35rem',
-            transform: 'translateY(8px)',
-            fontWeight: 400
-          }}>
-            J
-          </span>
-          <span style={{ 
-            fontFamily: "'Cinzel', serif", 
-            fontSize: '1.7rem', 
-            fontWeight: 900,
-            background: 'linear-gradient(180deg, #F1D592 0%, #D4AF37 50%, #B8860B 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            letterSpacing: '2px',
-            textTransform: 'uppercase'
-          }}>
-            incencho
-          </span>
+          <img 
+            src="/images/logo.png" 
+            alt="JINCENCHO" 
+            style={{ height: '100%', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}
+          />
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('home'); }} style={{ color: currentView === 'home' ? 'var(--text-primary)' : 'inherit', textDecoration: 'none' }}>홈</a>
