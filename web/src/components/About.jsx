@@ -224,13 +224,13 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
 
       {/* 진주로 온 이유 스토리 */}
       <div className="glass-panel" style={{ margin: '3rem 0', borderLeft: '4px solid var(--accent-blue)', borderRadius: '12px', padding: '2rem 2rem 2rem 2.5rem' }}>
-        <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-blue)' }}>Family & Challenge: 진주와 울산을 잇는 진심</h3>
+        <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-blue)' }}>Family & Vision: 부울경을 넘어 전국으로 전하는 진심</h3>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem' }}>
           저는 태어나고 자라며 오랜 시간 터전을 닦아온 <strong style={{ color: 'var(--text-primary)' }}>울산 사람입니다.</strong><br />
-          회사의 전폭적인 지원으로 지금은 진주에서 새로운 도전을 이어가고 있지만, 울산에 있는 소중한 가족들을 생각하며 매 순간 고객님들께 가장 이로운 혜택을 드리고자 최선을 다하고 있습니다.
+          회사의 전폭적인 지원으로 지금은 진주 통합매장에서 새로운 도전을 이어가고 있지만, 울산에 있는 소중한 가족들을 생각하며 매 순간 모든 고객님들께 가장 이로운 혜택을 드리고자 최선을 다하고 있습니다.
         </p>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem', marginTop: '1rem' }}>
-          한 달에 수 차례는 울산에서 가족들과 함께 시간을 보내며 에너지를 재충전하고 있으며, 그 활력으로 진주 고객님들께 더 깊은 진심을 전하고자 노력합니다. <strong style={{ color: 'var(--text-primary)' }}>가족을 사랑하는 마음만큼,</strong> 고객님의 공간 또한 정성을 다해 책임지겠습니다.
+          저의 활동 영역은 진주에 머물지 않습니다. <strong style={{ color: 'var(--text-primary)' }}>울산, 부산, 경남 지역</strong>은 물론, 저의 진심 어린 상담이 필요한 분이라면 <strong style={{ color: 'var(--text-primary)' }}>전국 어디라도</strong> 최적의 솔루션을 제안해 드립니다. 한 달에 수 차례 울산을 오가며 가족들과 나누는 따뜻한 에너지를 전국의 모든 고객님께 최고의 혜택으로 돌려드리겠습니다.
         </p>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem', marginTop: '1rem' }}>
           이곳, 경남 진주 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>은 <strong style={{ color: 'var(--text-primary)' }}>백화점과 로드샵</strong>의 정책과 혜택을 한 곳에서 한 번에 제공하는 곳으로,<br />
