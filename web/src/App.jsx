@@ -21,17 +21,38 @@ function App() {
         <div 
           onClick={() => setCurrentView('home')}
           style={{ 
-            fontSize: '1.4rem', 
-            fontWeight: 900, 
-            letterSpacing: '4px', 
             cursor: 'pointer',
-            background: 'linear-gradient(135deg, #D4AF37 0%, #F1D592 50%, #D4AF37 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textTransform: 'uppercase'
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            lineHeight: 1
           }}
         >
-          JINCENCHO
+          <div style={{ 
+            fontFamily: "'Great Vibes', cursive", 
+            fontSize: '2.5rem', 
+            background: 'linear-gradient(to bottom, #f1d592 0%, #d4af37 50%, #b8860b 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '-0.5rem',
+            display: 'flex',
+            alignItems: 'baseline'
+          }}>
+            <span style={{ fontSize: '3.5rem', marginRight: '-0.2rem' }}>J</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 900, letterSpacing: '1px' }}>incencho</span>
+          </div>
+          <div style={{ 
+            fontFamily: "'Montserrat', sans-serif", 
+            fontSize: '0.55rem', 
+            letterSpacing: '2.5px', 
+            color: 'var(--accent-gold)', 
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            opacity: 0.8,
+            paddingLeft: '0.4rem'
+          }}>
+            Jinju Centum Chojunseok
+          </div>
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('home'); }} style={{ color: currentView === 'home' ? 'var(--text-primary)' : 'inherit', textDecoration: 'none' }}>홈</a>
