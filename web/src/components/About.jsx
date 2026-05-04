@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function About({ onNavigateToWhySamsung, onBack }) {
+  const [isImageOpen, setIsImageOpen] = useState(false);
   const career = [
     {
       year: '2007.03',
@@ -49,6 +50,34 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
   return (
     <section className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem', maxWidth: '900px', margin: '0 auto' }}>
       
+      {/* 이미지 확대 모달 */}
+      {isImageOpen && (
+        <div 
+          onClick={() => setIsImageOpen(false)}
+          style={{
+            position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.85)', zIndex: 10000,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: 'zoom-out', backdropFilter: 'blur(5px)',
+            animation: 'fadeIn 0.3s ease'
+          }}
+        >
+          <div style={{ position: 'relative', maxWidth: '85%', maxHeight: '80%' }}>
+            <img 
+              src="/images/profile.jpg" 
+              alt="조준석 매니저 확대" 
+              style={{ width: '100%', height: 'auto', borderRadius: '12px', border: '2px solid var(--accent-gold)' }}
+            />
+            <div style={{ 
+              position: 'absolute', top: '-40px', right: '0', color: 'white', 
+              fontSize: '1.2rem', fontWeight: 600 
+            }}>
+              닫기 ✕
+            </div>
+          </div>
+        </div>
+      )}
+
       {onBack && (
         <button onClick={onBack} className="btn-back">
           <span>←</span> 이전으로 돌아가기
@@ -160,14 +189,14 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         {/* 왼쪽: 프로필 카드 */}
         <div className="glass-panel" style={{ flex: '1', minWidth: '280px', maxWidth: '350px', textAlign: 'center', borderTop: '4px solid var(--accent-gold)' }}>
           <div 
-            onClick={() => window.open('/images/profile.jpg', '_blank')}
+            onClick={() => setIsImageOpen(true)}
             style={{
               width: '120px', height: '120px', borderRadius: '50%', margin: '0 auto 1.5rem',
               overflow: 'hidden', border: '3px solid var(--accent-gold)',
               boxShadow: '0 8px 24px rgba(197, 160, 89, 0.3)',
               cursor: 'zoom-in'
             }}
-            title="클릭하여 원본 사진 보기"
+            title="클릭하여 확대 보기"
           >
             <img 
               src="/images/profile.jpg" 
