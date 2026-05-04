@@ -1,18 +1,14 @@
 const fs = require('fs');
-const path = 'c:/Users/cho/Desktop/진센조 프로젝트/api/web/public/images';
+const src = 'C:/Users/cho/.gemini/antigravity/brain/bba99947-493f-448b-9244-a48db80b71f3/jincencho_perfect_transparent_logo_1777902981766.png';
+const dest = 'c:/Users/cho/Desktop/진센조 프로젝트/api/web/public/images/logo.png';
+
 try {
-  const files = fs.readdirSync(path);
-  const target = files.find(f => {
-    try {
-      return fs.statSync(`${path}/${f}`).size === 1412369;
-    } catch (e) { return false; }
-  });
-  if (target) {
-    fs.renameSync(`${path}/${target}`, `${path}/logo.png`);
-    console.log(`Success: Renamed ${target} to logo.png`);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, dest);
+    console.log('Success: Perfect transparent logo applied.');
   } else {
-    console.log('Error: Target file with size 1412369 not found.');
+    console.log('Error: Source file not found.');
   }
 } catch (err) {
-  console.error('Error reading directory:', err);
+  console.error('Copy failed:', err);
 }
