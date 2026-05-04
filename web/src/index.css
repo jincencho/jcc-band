@@ -148,15 +148,26 @@ section {
   transform: translateX(-6px);
 }
 
-/* CTA Pulse Animation */
+/* CTA Pulse Animation (Enhanced) */
 @keyframes pulse-gold {
-  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-  70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+  50% { transform: scale(1.05); box-shadow: 0 0 35px 15px rgba(212, 175, 55, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
 .pulse {
-  animation: pulse-gold 2.5s infinite;
+  animation: pulse-gold 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-6px) scale(1.03);
+  filter: brightness(1.2);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:active, .btn-secondary:active {
+  transform: translateY(2px) scale(0.96);
 }
 
 /* Layout Helpers */

@@ -73,10 +73,9 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         <button 
           onClick={onNavigateToWhySamsung}
           className="btn-primary pulse" 
+          style={{ padding: '1.5rem 3rem', fontSize: '1.2rem' }}
         >
-          <span>💡</span>
-          <span>왜 삼성인가요? 핵심 이유 확인하기</span>
-          <span>→</span>
+          왜 삼성인가요? 핵심 이유 확인하기
         </button>
       </div>
 
