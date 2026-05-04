@@ -159,11 +159,16 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         
         {/* 왼쪽: 프로필 카드 */}
         <div className="glass-panel" style={{ flex: '1', minWidth: '280px', maxWidth: '350px', textAlign: 'center', borderTop: '4px solid var(--accent-gold)' }}>
-          <div style={{
-            width: '120px', height: '120px', borderRadius: '50%', margin: '0 auto 1.5rem',
-            overflow: 'hidden', border: '3px solid var(--accent-gold)',
-            boxShadow: '0 8px 24px rgba(197, 160, 89, 0.3)'
-          }}>
+          <div 
+            onClick={() => window.open('/images/profile.jpg', '_blank')}
+            style={{
+              width: '120px', height: '120px', borderRadius: '50%', margin: '0 auto 1.5rem',
+              overflow: 'hidden', border: '3px solid var(--accent-gold)',
+              boxShadow: '0 8px 24px rgba(197, 160, 89, 0.3)',
+              cursor: 'zoom-in'
+            }}
+            title="클릭하여 원본 사진 보기"
+          >
             <img 
               src="/images/profile.jpg" 
               alt="조준석 매니저" 
@@ -180,7 +185,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
               { label: '출신', value: '울산' },
               { label: '현재', value: '경남 진주' },
               { label: '삼성 경력', value: '2007년~현재' },
-              { label: '전문분야', value: '혼수·이사·입주 가전' },
+              { label: '전문분야', value: '가전 & 휴대폰 전 품목 마스터' },
             ].map(item => (
               <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid var(--glass-border)', fontSize: '0.9rem' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>{item.label}</span>

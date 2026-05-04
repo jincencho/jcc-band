@@ -68,7 +68,7 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
               지금 바로 상담예약 📅
             </button>
             <button className="btn-secondary float" onClick={onNavigateToAbout} style={{ flex: 1, minWidth: '160px' }}>
-              조준석 약력 확인하기 🔍
+              WHAT 진센조 🔍
             </button>
             <button className="btn-secondary" onClick={handleShare} style={{ flex: 1, minWidth: '160px', borderStyle: 'dashed' }}>
               주변에 공유하기 🔗
