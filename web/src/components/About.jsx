@@ -224,16 +224,16 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
 
       {/* 진주로 온 이유 스토리 */}
       <div className="glass-panel" style={{ margin: '3rem 0', borderLeft: '4px solid var(--accent-blue)', borderRadius: '12px', padding: '2rem 2rem 2rem 2.5rem' }}>
-        <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-blue)' }}>Why Jinju? 진주를 선택한 이유</h3>
+        <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--accent-blue)' }}>Family & Challenge: 진주와 울산을 잇는 진심</h3>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem' }}>
-          저는 태어나고 자라며 오래 일해온 <strong style={{ color: 'var(--text-primary)' }}>울산 사람입니다.</strong><br />
-          2007년부터 삼성에서만 19년간 꾸준히 경력을 쌓아온 끝,<br />
-          <strong style={{ color: 'var(--text-primary)' }}>2026년 4월</strong>, 저는 진주를 선택했습니다.
+          저는 태어나고 자라며 오랜 시간 터전을 닦아온 <strong style={{ color: 'var(--text-primary)' }}>울산 사람입니다.</strong><br />
+          회사의 전폭적인 지원으로 지금은 진주에서 새로운 도전을 이어가고 있지만, 울산에 있는 소중한 가족들을 생각하며 매 순간 고객님들께 가장 이로운 혜택을 드리고자 최선을 다하고 있습니다.
         </p>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem', marginTop: '1rem' }}>
-          그 이유는 단 하나입니다 —<br />
-          경남 진주에 자리잡은 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>은,<br />
-          <strong style={{ color: 'var(--text-primary)' }}>백화점과 로드샵</strong>의 정책과 혜택을 한 곳에서 한 번에 제공하는 곳으로,<br />
+          한 달에 수 차례는 울산에서 가족들과 함께 시간을 보내며 에너지를 재충전하고 있으며, 그 활력으로 진주 고객님들께 더 깊은 진심을 전하고자 노력합니다. <strong style={{ color: 'var(--text-primary)' }}>가족을 사랑하는 마음만큼,</strong> 고객님의 공간 또한 정성을 다해 책임지겠습니다.
+        </p>
+        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.9, wordBreak: 'keep-all', fontSize: '1.05rem', marginTop: '1rem' }}>
+          이곳, 경남 진주 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>은 <strong style={{ color: 'var(--text-primary)' }}>백화점과 로드샵</strong>의 정책과 혜택을 한 곳에서 한 번에 제공하는 곳으로,<br />
           고객께 <strong style={{ color: 'var(--text-primary)' }}>가장 유리한 조건과 최대의 혜택</strong>을 드릴 수 있는 유일한 공간이기 때문입니다.<br />
           오랜 터전인 울산을 떠나 진주로 온 만큼, 여러분께 있는 힘껏 유리하고 성실하게 상담해 드리겠습니다.
         </p>
