@@ -58,10 +58,10 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
           <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '1rem', fontWeight: 300, wordBreak: 'keep-all', lineHeight: 1.8 }}>
             <strong style={{ color: 'var(--text-primary)', letterSpacing: '1px', fontSize: '0.95rem' }}>JINJU CENTUM CHOJUNSEOK</strong>
           </p>
-          <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '560px', marginBottom: '2.5rem', fontWeight: 300, wordBreak: 'keep-all', lineHeight: 1.9 }}>
+          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '2.5rem', fontWeight: 400, wordBreak: 'keep-all', lineHeight: 1.8 }}>
             이곳저곳 비교하며 쌓인 피로를 덜어드립니다.<br />
-            경남 진주 <strong style={{ color: 'var(--text-primary)' }}>전국 최초 통합매장</strong>에서<br />
-            백화점과 로드샵의 혜택을 <strong style={{ color: 'var(--text-primary)' }}>한 번에 종결하세요.</strong>
+            경남 진주 <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>전국 최초 통합매장</strong>에서<br />
+            백화점과 로드샵의 혜택을 <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>한 번에 종결하세요.</strong>
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
             <button className="btn-primary pulse" onClick={onNavigateToReservation} style={{ flex: 1, minWidth: '160px' }}>
