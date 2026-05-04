@@ -64,7 +64,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
         </h2>
         <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.8, wordBreak: 'keep-all' }}>
           단순히 제품을 파는 것이 아닌, 고객의 라이프스타일에 맞는 최적의 솔루션을 제안합니다.
-          삼성맨으로서 19년, 여러분의 현명한 선택을 도와드리겠습니다.
+          삼성과 함께한 19년의 시간, 기술의 깊이를 넘어 진심의 깊이로 당신의 현명한 선택을 증명하겠습니다.
         </p>
       </div>
 
@@ -83,7 +83,7 @@ export default function About({ onNavigateToWhySamsung, onBack }) {
       {/* 왜 삼성인가요? (영상 갤러리) */}
       <div style={{ marginBottom: '5rem' }}>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: 'var(--accent-gold)' }}>
-          🎞️ 왜 삼성인가요? (영상으로 보기)
+          🎞️ 왜 AI가전은 삼성인가요? (영상으로 보기)
         </h3>
         <div style={{ 
           display: 'grid', 
