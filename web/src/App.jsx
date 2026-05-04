@@ -22,36 +22,19 @@ function App() {
           onClick={() => setCurrentView('home')}
           style={{ 
             cursor: 'pointer',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            lineHeight: 1
+            padding: '0.5rem 0'
           }}
         >
           <div style={{ 
-            fontFamily: "'Great Vibes', cursive", 
-            fontSize: '2.5rem', 
-            background: 'linear-gradient(to bottom, #f1d592 0%, #d4af37 50%, #b8860b 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            marginBottom: '-0.5rem',
-            display: 'flex',
-            alignItems: 'baseline'
-          }}>
-            <span style={{ fontSize: '3.5rem', marginRight: '-0.2rem' }}>J</span>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 900, letterSpacing: '1px' }}>incencho</span>
-          </div>
-          <div style={{ 
-            fontFamily: "'Montserrat', sans-serif", 
-            fontSize: '0.55rem', 
-            letterSpacing: '2.5px', 
-            color: 'var(--accent-gold)', 
-            fontWeight: 600,
+            fontFamily: "'Cinzel', serif", 
+            fontSize: '1.7rem', 
+            fontWeight: 800,
+            color: '#D4AF37',
+            letterSpacing: '5px',
             textTransform: 'uppercase',
-            opacity: 0.8,
-            paddingLeft: '0.4rem'
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
           }}>
-            Jinju Centum Chojunseok
+            JINCENCHO
           </div>
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2rem', fontWeight: 500, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
