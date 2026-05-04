@@ -380,11 +380,18 @@ export default function Reservation({ onBack }) {
 
   return (
     <div className="container" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
-      {onBack && (
-        <button onClick={onBack} className="btn-back">
-          <span>←</span> 이전으로 돌아가기
-        </button>
-      )}
+      <button 
+        onClick={() => {
+          if (view === 'selection') {
+            onBack();
+          } else {
+            setView('selection');
+          }
+        }} 
+        className="btn-back"
+      >
+        <span>←</span> {view === 'selection' ? '이전으로 돌아가기' : '상담 방식 선택으로 돌아가기'}
+      </button>
       <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', margin: '0 auto', borderTop: '4px solid var(--accent-gold)' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>
