@@ -18,6 +18,13 @@
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 8rem;
+  --nav-logo-height: 50px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-logo-height: 35px;
+  }
 }
 
 * {

@@ -20,11 +20,12 @@ function App() {
       <nav style={{ padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--glass-border)', background: 'var(--bg-color)', position: 'sticky', top: 0, zIndex: 100 }}>
         <div 
           onClick={() => setCurrentView('home')}
+          className="navbar-logo-container"
           style={{ 
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            height: '50px'
+            height: 'var(--nav-logo-height)'
           }}
         >
           <img 
