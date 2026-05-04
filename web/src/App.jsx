@@ -8,6 +8,12 @@ import './index.css';
 
 function App() {
   const [currentView, setCurrentView] = useState('home'); // 'home', 'admin', 'reservation', 'about', 'why-samsung'
+
+  // 페이지 이동 시 최상단으로 스크롤
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentView]);
+
   return (
     <div className="app-container">
       {/* Navigation Bar (Simple Mock) */}
