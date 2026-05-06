@@ -356,7 +356,7 @@ export default function Reservation({ onBack }) {
           />
           <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
             {view === 'premium' 
-              ? '* 상담 희망하시는 모델 사진이나 단지 평면도를 첨부해 주시면 더 정확한 상담이 가능합니다.'
+              ? '* 상담 희망하시는 모델 사진이나 단지 평면도를 첨부해 주시면 더 빠르고 정확한 상담이 가능합니다.'
               : '* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.'}
           </p>
         </div>
