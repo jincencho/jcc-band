@@ -34,7 +34,48 @@ export default async function handler(req, res) {
     }
 
     // 1. Send Text Message to Telegram
-    if (body.message) {
+    const { formData } = body;
+    if (formData) {
+      const typeLabel = formData.view === 'premium' ? '매장방문' : '비대면';
+      const getTimeRange = (hour) => {
+        if (hour === 9) return "09:00 ~ 12:00";
+        if (hour === 14) return "14:00 ~ 17:00";
+        if (hour === 17) return "17:00 ~ 20:00";
+        return `${hour}:00`;
+      };
+
+      let formattedMessage = 
+        `🔔 *새 상담 신청 (${typeLabel})*\n\n` +
+        `👤 *이름:* ${formData.name}\n` +
+        `📞 *연락처:* ${formData.phone}${formData.phone2 ? ` / ${formData.phone2}` : ''}\n` +
+        `📋 *상담 분야:* ${formData.topic.replace('문의', '').replace('가전', '')}\n`;
+
+      if (formData.view === 'premium') {
+        formattedMessage += `📅 *희망 날짜:* ${formData.date} (${getTimeRange(formData.time)})\n`;
+      }
+      
+      formattedMessage += `💬 *추가 요청:* ${formData.details || '없음'}\n\n`;
+
+      if (formData.utm && formData.utm.utm_source) {
+        formattedMessage += 
+          `🌐 *유입 경로*\n` +
+          `- 출처: ${formData.utm.utm_source || '-'}\n` +
+          `- 캠페인: ${formData.utm.utm_campaign || '-'}\n` +
+          `- 포스트: ${formData.utm.utm_content || '-'}\n` +
+          `- 단지/지역: ${formData.utm.utm_term || '-'}\n`;
+      }
+
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: formattedMessage,
+          parse_mode: 'Markdown'
+        })
+      });
+    } else if (body.message) {
+      // Fallback for simple message requests
       await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -9,8 +9,22 @@ import './index.css';
 function App() {
   const [currentView, setCurrentView] = useState('home'); // 'home', 'admin', 'reservation', 'about', 'why-samsung'
 
-  // 페이지 이동 시 최상단으로 스크롤
+  // 페이지 진입 시 UTM 태그 캡처 및 페이지 이동 시 최상단으로 스크롤
   React.useEffect(() => {
+    // UTM 태그 캡처
+    const params = new URLSearchParams(window.location.search);
+    const utmTags = {
+      utm_source: params.get('utm_source'),
+      utm_medium: params.get('utm_medium'),
+      utm_campaign: params.get('utm_campaign'),
+      utm_content: params.get('utm_content'),
+      utm_term: params.get('utm_term'),
+    };
+    
+    if (utmTags.utm_source) {
+      sessionStorage.setItem('jcc_utm_tags', JSON.stringify(utmTags));
+    }
+
     window.scrollTo(0, 0);
   }, [currentView]);
 

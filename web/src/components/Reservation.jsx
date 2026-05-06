@@ -131,23 +131,26 @@ export default function Reservation({ onBack }) {
       
       message += `\n_JCC 진센조 시스템_`;
 
-      // 1. 텍스트 메시지 전송 (서버 사이드 API 호출)
+      // 세션에서 UTM 태그 읽기
+      const savedUtm = sessionStorage.getItem('jcc_utm_tags');
+      const utm = savedUtm ? JSON.parse(savedUtm) : {};
+      
       const textRes = await fetch(`/api/send-telegram`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           message,
-          formData: { ...formData, view } // Pass structured data for Google Sheets
+          formData: { ...formData, view, utm } // UTM 정보 포함
         })
       });
 
       if (!textRes.ok) throw new Error('메시지 전송 실패');
 
-      // 2. 사진이 있으면 사진 전송
-      if (view === 'quote' && selectedFile) {
+      // 2. 사진이 있으면 사진 전송 (매장방문/비대면 공통)
+      if (selectedFile) {
         const fileData = new FormData();
         fileData.append('photo', selectedFile);
-        fileData.append('caption', `📷 ${formData.name}님의 첨부 사진`);
+        fileData.append('caption', `📷 ${formData.name}님의 첨부 사진 (${typeLabel})`);
 
         const photoRes = await fetch(`/api/send-telegram`, {
           method: 'POST',
@@ -341,15 +344,21 @@ export default function Reservation({ onBack }) {
         </div>
       )}
 
-      {view === 'quote' && (
+      {(view === 'quote' || view === 'premium') && (
         <div className="form-group">
-          <label htmlFor="photo" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>견적서 또는 평면도 첨부 (선택)</label>
+          <label htmlFor="photo" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>
+            {view === 'premium' ? '희망 모델 또는 평면도 첨부 (선택)' : '견적서 또는 평면도 첨부 (선택)'}
+          </label>
           <input 
             type="file" id="photo" name="photo" accept="image/*"
             onChange={handleChange}
             style={{ width: '100%', padding: '0.5rem', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', border: '1px dashed var(--glass-border)', color: 'var(--text-secondary)', fontSize: '0.9rem' }}
           />
-          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.</p>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
+            {view === 'premium' 
+              ? '* 상담 희망하시는 모델 사진이나 단지 평면도를 첨부해 주시면 더 정확한 상담이 가능합니다.'
+              : '* 기존 견적서나 평면도 사진을 첨부해 주시면 더 정확한 상담이 가능합니다.'}
+          </p>
         </div>
       )}
 
