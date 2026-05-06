@@ -100,7 +100,8 @@ export default async function handler(req, res) {
     
     if (isMultipart) {
       // Proxy the multipart request directly to Telegram for photos
-      const response = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+      // We add chat_id as a query parameter because it's missing in the raw body from the frontend
+      const response = await fetch(`https://api.telegram.org/bot${token}/sendPhoto?chat_id=${chatId}`, {
         method: 'POST',
         headers: { 'Content-Type': contentType },
         body: Buffer.concat(chunks) // Forward the raw multipart body
