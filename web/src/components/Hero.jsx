@@ -2,6 +2,8 @@ import React from 'react';
 import '../index.css';
 import Reservation from './Reservation';
 
+import SocialLinks from './SocialLinks';
+
 export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
   const handleShare = () => {
     const shareData = {
@@ -74,8 +76,12 @@ export default function Hero({ onNavigateToReservation, onNavigateToAbout }) {
               주변에 공유하기 🔗
             </button>
           </div>
+
+          {/* SNS Links Section */}
+          <SocialLinks />
         </div>
       </div>
     </section>
   );
 }
+

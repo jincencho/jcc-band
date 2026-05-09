@@ -242,3 +242,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Social Links Responsiveness */
+@media (max-width: 768px) {
+  .social-grid {
+    justify-content: center;
+  }
+  .social-label {
+    justify-content: center;
+  }
+}
