@@ -9,33 +9,18 @@ export default function AdminSchedule({ onBack }) {
   const [blockedData, setBlockedData] = useState({});
 
   useEffect(() => {
-    const fetchAndMigrate = async () => {
+    const fetchSchedule = async () => {
       try {
         const res = await fetch('/api/schedule');
-        let serverData = {};
         if (res.ok) {
-          serverData = await res.json();
-        }
-
-        const localSaved = localStorage.getItem('jcc_blocked_times_v2');
-        if (localSaved && (!serverData || Object.keys(serverData).length === 0)) {
-          // 서버 데이터가 비어있고 로컬 데이터가 있으면 서버로 업로드 (마이그레이션)
-          const localData = JSON.parse(localSaved);
-          await fetch('/api/schedule', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(localData)
-          });
-          setBlockedData(localData);
-          console.log('Migrated local data to server');
-        } else {
-          setBlockedData(serverData || {});
+          const data = await res.json();
+          setBlockedData(data || {});
         }
       } catch (err) {
-        console.error('Failed to sync schedule:', err);
+        console.error('Failed to fetch schedule:', err);
       }
     };
-    fetchAndMigrate();
+    fetchSchedule();
   }, []);
 
   const handleLogin = (e) => {
