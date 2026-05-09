@@ -17,10 +17,18 @@ export default function Reservation({ onBack }) {
   const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem('jcc_blocked_times_v2');
-    if (saved) {
-      setBlockedData(JSON.parse(saved));
-    }
+    const fetchBlockedData = async () => {
+      try {
+        const res = await fetch('/api/schedule');
+        if (res.ok) {
+          const data = await res.json();
+          setBlockedData(data || {});
+        }
+      } catch (err) {
+        console.error('Failed to fetch schedule:', err);
+      }
+    };
+    fetchBlockedData();
   }, [status]);
 
   const handleChange = (e) => {
@@ -163,8 +171,15 @@ export default function Reservation({ onBack }) {
       if (view === 'premium') {
         const newBlocked = { ...blockedData };
         if (!newBlocked[formData.date]) newBlocked[formData.date] = { hours: [], reason: null };
-        newBlocked[formData.date].hours.push(formData.time); // 해당 타임 슬롯(시작 시간) 차단
-        localStorage.setItem('jcc_blocked_times_v2', JSON.stringify(newBlocked));
+        if (!newBlocked[formData.date].hours.includes(formData.time)) {
+          newBlocked[formData.date].hours.push(formData.time); 
+        }
+        
+        await fetch('/api/schedule', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newBlocked)
+        });
         setBlockedData(newBlocked);
       }
 

@@ -9,22 +9,33 @@ export default function AdminSchedule({ onBack }) {
   const [blockedData, setBlockedData] = useState({});
 
   useEffect(() => {
-    const saved = localStorage.getItem('jcc_blocked_times_v2');
-    if (saved) {
-      setBlockedData(JSON.parse(saved));
-    } else {
-      // 마이그레이션 (이전 버전 데이터가 있다면)
-      const oldSaved = localStorage.getItem('jcc_blocked_times');
-      if (oldSaved) {
-        const oldData = JSON.parse(oldSaved);
-        const newData = {};
-        for (const date in oldData) {
-          newData[date] = { hours: oldData[date], reason: null };
+    const fetchAndMigrate = async () => {
+      try {
+        const res = await fetch('/api/schedule');
+        let serverData = {};
+        if (res.ok) {
+          serverData = await res.json();
         }
-        setBlockedData(newData);
-        localStorage.setItem('jcc_blocked_times_v2', JSON.stringify(newData));
+
+        const localSaved = localStorage.getItem('jcc_blocked_times_v2');
+        if (localSaved && (!serverData || Object.keys(serverData).length === 0)) {
+          // 서버 데이터가 비어있고 로컬 데이터가 있으면 서버로 업로드 (마이그레이션)
+          const localData = JSON.parse(localSaved);
+          await fetch('/api/schedule', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(localData)
+          });
+          setBlockedData(localData);
+          console.log('Migrated local data to server');
+        } else {
+          setBlockedData(serverData || {});
+        }
+      } catch (err) {
+        console.error('Failed to sync schedule:', err);
       }
-    }
+    };
+    fetchAndMigrate();
   }, []);
 
   const handleLogin = (e) => {
@@ -37,9 +48,40 @@ export default function AdminSchedule({ onBack }) {
     }
   };
 
-  const saveBlockedData = (newData) => {
+  const forceSyncToServer = async () => {
+    const localSaved = localStorage.getItem('jcc_blocked_times_v2');
+    if (!localSaved) return alert('전송할 로컬 데이터가 없습니다.');
+    
+    if (confirm('현재 기기(모바일)의 마감 정보를 서버로 강제 전송하시겠습니까? (서버의 기존 데이터는 덮어씌워집니다.)')) {
+      try {
+        const localData = JSON.parse(localSaved);
+        await fetch('/api/schedule', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(localData)
+        });
+        setBlockedData(localData);
+        alert('동기화가 완료되었습니다. 이제 다른 PC에서도 확인이 가능합니다.');
+      } catch (err) {
+        alert('전송 실패: ' + err.message);
+      }
+    }
+  };
+
+  const saveBlockedData = async (newData) => {
     setBlockedData(newData);
-    localStorage.setItem('jcc_blocked_times_v2', JSON.stringify(newData));
+    try {
+      await fetch('/api/schedule', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newData)
+      });
+      // 성공 시 로컬스토리지에도 백업 (선택사항)
+      localStorage.setItem('jcc_blocked_times_v2', JSON.stringify(newData));
+    } catch (err) {
+      console.error('Failed to save to server:', err);
+      alert('서버 저장에 실패했습니다. 인터넷 연결을 확인해주세요.');
+    }
   };
 
   const toggleTimeBlock = (hour) => {
@@ -188,7 +230,22 @@ export default function AdminSchedule({ onBack }) {
       <div className="glass-panel" style={{ maxWidth: '1000px', margin: '0 auto', borderTop: '4px solid var(--accent-blue)' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>관리자 스케줄 등록</h2>
-          <p style={{ color: 'var(--text-secondary)' }}>달력에서 날짜를 선택하여 일정을 관리하세요.</p>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>달력에서 날짜를 선택하여 일정을 관리하세요.</p>
+          <button 
+            onClick={forceSyncToServer}
+            style={{ 
+              background: 'rgba(52, 211, 153, 0.2)', 
+              border: '1px solid #34d399', 
+              color: '#34d399', 
+              padding: '0.5rem 1rem', 
+              borderRadius: '20px', 
+              fontSize: '0.85rem', 
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            🔄 현재 기기 데이터를 서버로 강제 동기화
+          </button>
         </div>
 
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
