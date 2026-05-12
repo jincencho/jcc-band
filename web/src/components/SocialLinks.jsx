@@ -34,7 +34,7 @@ const SocialLinks = () => {
     },
     {
       name: '카카오톡',
-      url: 'http://pf.kakao.com/_RRxmKG',
+      url: 'http://pf.kakao.com/_xhxgBxbX',
       color: '#FEE500',
       icon: (
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -44,7 +44,7 @@ const SocialLinks = () => {
     },
     {
       name: '페이스북',
-      url: 'https://www.facebook.com/jincencho',
+      url: 'https://www.facebook.com/share/1R3ndHSJqq/',
       color: '#1877F2',
       icon: (
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
