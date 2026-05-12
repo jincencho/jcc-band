@@ -6,10 +6,10 @@ export default function Reservation({ onBack }) {
     name: '',
     phone: '',
     phone2: '', // 보조 연락처
-    topic: '구독문의',
+    topic: '신혼가전',
     date: '',
     time: null,
-    details: '' // 비대면 견적 시 추가 상세 정보
+    details: '' // 비대면 상담 시 추가 상세 정보
   });
   const [status, setStatus] = useState('idle');
   const [blockedData, setBlockedData] = useState({});
@@ -122,7 +122,7 @@ export default function Reservation({ onBack }) {
         return `${hour}:00`;
       };
       
-      const typeLabel = view === 'premium' ? '🏆 프리미엄 상담 예약' : '📧 비대면 견적 요청';
+      const typeLabel = view === 'premium' ? '🏆 프리미엄 상담 예약' : '📧 비대면 상담 신청';
       
       let message = 
         `📣 *JCC 신규 접수 (${typeLabel})*\n\n` +
@@ -193,15 +193,19 @@ export default function Reservation({ onBack }) {
     } catch (error) {
       console.error(error);
       setStatus('error');
+      alert('접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
     }
   };
 
   const renderSelection = () => (
     <div className="mobile-stack" style={{ display: 'flex', gap: '1.5rem', width: '100%' }}>
       {/* 1순위: 매장방문 상담 (강력 강조) */}
-      <button 
+      <div 
         className="glass-panel pulse" 
         onClick={() => setView('premium')}
+        role="button"
+        tabIndex={0}
+        onKeyPress={(e) => e.key === 'Enter' && setView('premium')}
         style={{ 
           padding: '2rem 1.5rem', textAlign: 'left', cursor: 'pointer', 
           borderLeft: '5px solid var(--accent-gold)', width: '100%',
@@ -215,12 +219,15 @@ export default function Reservation({ onBack }) {
         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
           진주 통합매장에서 직접 만나 뵙고<br /><strong style={{ color: 'var(--accent-gold-light)' }}>최적의 설계와 최대 혜택</strong>을 종결해 드립니다.
         </p>
-      </button>
+      </div>
 
-      {/* 2순위: 비대면 견적 */}
-      <button 
+      {/* 2순위: 비대면 상담신청 */}
+      <div 
         className="glass-panel float" 
         onClick={() => setView('quote')}
+        role="button"
+        tabIndex={0}
+        onKeyPress={(e) => e.key === 'Enter' && setView('quote')}
         style={{ 
           padding: '2rem 1.5rem', textAlign: 'left', cursor: 'pointer', 
           borderLeft: '5px solid rgba(255,255,255,0.3)', width: '100%',
@@ -230,11 +237,11 @@ export default function Reservation({ onBack }) {
         }}
       >
         <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📧</div>
-        <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', color: 'white' }}>비대면 견적 요청</h3>
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem', color: 'white' }}>비대면 상담신청</h3>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6, fontWeight: 400, wordBreak: 'keep-all' }}>
           매장 방문 없이 <strong style={{ color: 'white' }}>카톡이나 문자</strong>로<br />간편하게 상담받으실 수 있습니다.
         </p>
-      </button>
+      </div>
     </div>
   );
 
@@ -419,7 +426,7 @@ export default function Reservation({ onBack }) {
       <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', margin: '0 auto', borderTop: '4px solid var(--accent-gold)' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-          {view === 'selection' ? '상담 방식 선택' : view === 'premium' ? '프리미엄 상담 예약' : '비대면 견적 요청'}
+          {view === 'selection' ? '상담 방식 선택' : view === 'premium' ? '프리미엄 상담 예약' : '비대면 상담 신청'}
         </h2>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
           {view === 'selection' ? '원하시는 상담 방식을 선택해 주세요.' : '조준석 매니저가 직접 솔루션을 제안해 드립니다.'}
